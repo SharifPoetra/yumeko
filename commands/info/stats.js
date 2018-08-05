@@ -12,11 +12,11 @@ const plotOptions = {
 
 exports.run = async (client, msg, args) => {
 	try{
-	 client.shard.fetchClientValues('guilds.size').then(guilds => {
+	 client.shard.fetchClientValues('guilds.size').then(async guilds => {
 		var guildsSize = guilds.reduce((prev, val) => prev + val, 0);
-	    client.shard.fetchClientValues('users.size').then(users => {
+	    client.shard.fetchClientValues('users.size').then(async users => {
 			var usersSize = users.reduce((prev, val) => prev + val, 0);
-		client.shard.fetchClientValues('channels.size').then(channels => {
+		client.shard.fetchClientValues('channels.size').then(async channels => {
 			var channelsSize = channels.reduce((prev, val) => prev + val, 0);
 		const embed = new RichEmbed()
 		.setColor('RANDOM')
