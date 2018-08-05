@@ -10,6 +10,7 @@ shard.on('launch', pecahan => {
 shard.on('message', (pecahan, msg) => {
   console.log(`[${new Date().toString().split(" ", 5).join(" ")}] #${pecahan.id} | ${msg._eval} | ${pecahan._result}`);
 });
+shard.spawn();
 
 //require('./server.js');
 
