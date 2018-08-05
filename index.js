@@ -8,7 +8,7 @@ shard.on('launch', pecahan => {
   console.log(`💎Launching Shard ${pecahan.id} [ ${pecahan.id + 1} of ${shard.totalShards} ]`);
 });
 
-require('./server.js');
+//require('./server.js');
 
 process.on('unhandledRejection', e => console.error(e))
 .on('uncaughtException', e => console.error(e));
