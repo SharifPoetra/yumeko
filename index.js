@@ -7,7 +7,7 @@ const shard = new ShardingManager('./yo.js',{
 shard.on('launch', pecahan => {
   console.log(`💎Launching Shard ${pecahan.id} [ ${pecahan.id + 1} of ${shard.totalShards} ]`);
 });
-shards.on('message', (pecahan, msg) => {
+shard.on('message', (pecahan, msg) => {
   console.log(`[${new Date().toString().split(" ", 5).join(" ")}] #${pecahan.id} | ${msg._eval} | ${pecahan._result}`);
 });
 
