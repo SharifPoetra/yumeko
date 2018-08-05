@@ -1,6 +1,6 @@
 const { ShardingManager } = require('discord.js');
 const shard = new ShardingManager('./yo.js',{
-  totalShards: 3,
+  totalShards: 1,
   token: process.env.TOKEN
 });
 shard.spawn();
