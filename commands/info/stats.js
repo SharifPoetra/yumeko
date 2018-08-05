@@ -12,13 +12,19 @@ const plotOptions = {
 
 exports.run = async (client, msg, args) => {
 	try{
+	 client.shard.fetchClientValues('guilds.size').then(guilds => {
+		var guildsSize = guilds.reduce((prev, val) => prev + val, 0);
+	    client.shard.fetchClientValues('users.size').then(users => {
+			var usersSize = users.reduce((prev, val) => prev + val, 0);
+		client.shard.fetchClientValues('channels.size').then(channels => {
+			var channelsSize = channels.reduce((prev, val) => prev + val, 0);
 		const embed = new RichEmbed()
 		.setColor('RANDOM')
 		.setAuthor(`Curent stats for ${client.user.tag}`, client.user.avatarURL)
 		.addField('📌 Presence', `\`\`\`
-•Guilds    ::     ${client.guilds.size}
-•Channels  ::     ${client.channels.size}
-•Users     ::     ${client.users.size}
+•Guilds    ::     ${guildsSize}
+•Channels  ::     ${usersSize}
+•Users     ::     ${channelsSize}
 •Commands  ::     ${client.commands.size}
 •Websocket ::     ${Math.floor(client.ping)}ms
 •Uptime    ::     ${client.util.parseDur(client.uptime)}\`\`\``, true)
@@ -32,7 +38,7 @@ exports.run = async (client, msg, args) => {
 •Node.js    ::    ${process.version}\`\`\``,true);
 		
 		
-    //WIP :P
+    //WIP :P //OK OK -Hazmi35
     
     if(args.length > 0 && args[0] === 'command'){
 			const chart = await new HighChartsConstructor()
@@ -73,6 +79,9 @@ exports.run = async (client, msg, args) => {
 			embed.setImage('attachment://chart.png');
 		}
 		return msg.channel.send(embed);
+	}).catch(console.error);
+	}).catch(console.error);
+	}).catch(console.error);
 	}catch(e){
 		return msg.channel.send(`Oh no an error occured :( \`${e.message}\` try again later`);
 	}
