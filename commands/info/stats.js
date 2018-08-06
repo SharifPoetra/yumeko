@@ -1,4 +1,4 @@
-const HighChartsConstructor = require("chart-constructor")
+const { HighChartsConstructor } = require("chart-constructor")
 const { RichEmbed, Attachment } = require('discord.js');
 const { loadavg } = require('os');
 
