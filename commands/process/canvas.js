@@ -10,8 +10,9 @@ exports.run = async (client, msg, args) => {
 	if(input.length > 1204) input = await client.util.hastebin(args.join(' '));
 	embed.addField('📥 INPUT', input);
 	try{
+		const avatar = (await client.snek.get(msg.author.avatarURL || client.user.avatarURL)).body;
 		let code = args.join(' ');
-		if(!code.startsWith('new Canvas')) throw 'the command cannot execute without new Canvas(high, width)';
+		if(!code.startsWith('new Canvas')) throw new Error('the command cannot execute without new Canvas(high, width)');
 		if(!code.includes('.toBufferAsync()')) code += '.toBufferAsync()';
 		code.replace(/;/g, '');
 		code.replace(regex, async (con)=> {
