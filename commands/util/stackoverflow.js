@@ -10,7 +10,7 @@ exports.run = async (client, msg, args) => {
 			order: 'asc',
 			sort: 'relevance',
 			answers: 1,
-			q: encodeURIComponent(args.join('+')),
+			q: encodeURIComponent(args.join(' ')),
 			site: 'stackoverflow',
 		});
 		if (!body.items.length) return msg.channel.send('Could not find any results.');
