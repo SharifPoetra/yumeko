@@ -10,6 +10,7 @@
     "start": "node index.js"
   },
   "dependencies": {
+    "gifencoder": "^1.1.0",
     "canvas": "^1.6.11",
     "canvas-constructor": "^1.0.1",
     "cheerio": "^0.22.0",
