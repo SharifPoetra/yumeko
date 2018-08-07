@@ -1,4 +1,5 @@
 const snek = require('node-superfetch');
+const nodeVersion = parseInt(process.versions.node.split('.'), 10);
 
 class Util {
   static shuffle (array){
@@ -70,6 +71,30 @@ class Util {
     if(!body.data) return undefined;
     const img = body.data[Math.floor(Math.random() * body.data.length)];
     return `http://imgur.com/${img.hash}${img.ext.replace(/\?.*/, "")}`;
+  }
+  static promisify(fn){
+  	if(nodeVersion >= 8) return require('util').promisify(fn);
+  	let name = fn.name;
+	  name = (name || '').replace(/\s|bound(?!$)/g, '');
+	  function newFunction(...args) {
+		const arg = [];
+		for (const key of Object.keys(args)) arg.push(args[key]);
+		return new Promise((resolve, reject) =>
+			fn.apply(this, [...args, (err, res) => {
+				if (err) return reject(err);
+				return resolve(res);
+			}]));
+	  }
+	Object.defineProperty(newFunction, 'name', { value: name });
+	return newFunction;
+  }
+  static promisifyAll(obj, suffix = 'Async'){
+  	const newObj = Object.getPrototypeOf(obj);
+	  for (const key of Object.keys(obj).concat(Object.keys(newObj))) {
+		if (typeof obj[key] !== 'function') continue;
+		obj[`${key}${suffix}`] = this.promisify(obj[key]);
+	}
+	return obj;
   }
 }
 
