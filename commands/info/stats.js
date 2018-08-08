@@ -1,3 +1,4 @@
+//taken from https://github.com/Soumil07/Apex-Bot/blob/master/commands/General/Chat%20Bot%20Info/stats.js
 const { HighChartsConstructor } = require("chart-constructor")
 const { RichEmbed, Attachment } = require('discord.js');
 const { loadavg } = require('os');
