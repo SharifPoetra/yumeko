@@ -1,5 +1,7 @@
 /* eslint-disable complexity  */
 
+//Taken from https://github.com/Soumil07/Apex-Bot/blob/master/lib/Connect4.js
+
 const emojis = ['1⃣', '2⃣', '3⃣', '4⃣', '5⃣', '6⃣', '7⃣', '⏹'];
 
 module.exports = class Connect4 {
