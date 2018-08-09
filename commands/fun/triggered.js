@@ -13,10 +13,10 @@ exports.run = async (client, msg, args) => {
 		const attachment = await getTriggered(body);
 		const embed = new RichEmbed()
 		.setColor('RANDOM')
-		.attachFile({attachment, name: 'triggered.png'})
-		.setURL('attachment://triggered.png')
+		.attachFile({attachment: attachment, name: 'triggered.gif'})
+		.setURL('attachment://triggered.gif')
 		.setTitle('Click here if image failed to load')
-		.setImage('attachment://triggered.png');
+		.setImage('attachment://triggered.gif');
 		await msg.channel.send(embed);
 		await mDel.delete();
 		return;
