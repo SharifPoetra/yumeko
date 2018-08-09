@@ -11,14 +11,7 @@ exports.run = async (client, msg, args) => {
 		const link = user.avatarURL.replace(/\.(gif|jpg|png|jpeg)\?size=2048/g, '.png?size=512');
 		const { body } = await client.snek.get(link);
 		const attachment = await getTriggered(body);
-		const embed = new RichEmbed()
-		.setColor('RANDOM')
-		.attachFile({attachment: attachment, name: 'triggered.gif'})
-		.setURL('https://google.com')
-		.setTitle('Click here if image failed to load')
-		.setImage('attachment://triggered.gif');
-		embed.setURL(embed.image.url);
-		await msg.channel.send(embed);
+		await msg.channel.send({file:{attachment, name: 'triggered.gif'}});
 		await mDel.delete();
 		return;
 	}catch(e){
