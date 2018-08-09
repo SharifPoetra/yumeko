@@ -14,9 +14,10 @@ exports.run = async (client, msg, args) => {
 		const embed = new RichEmbed()
 		.setColor('RANDOM')
 		.attachFile({attachment: attachment, name: 'triggered.gif'})
-		.setURL('attachment://triggered.gif')
+		.setURL('https://google.com')
 		.setTitle('Click here if image failed to load')
 		.setImage('attachment://triggered.gif');
+		embed.setURL(embed.image.url);
 		await msg.channel.send(embed);
 		await mDel.delete();
 		return;
