@@ -14,7 +14,7 @@ exports.run = async (client, msg, args) => {
 		const embed = new RichEmbed()
 		.setColor('RANDOM')
 		.attachFile({attachment, name: 'triggered.png'})
-		.setURL('attachment://triggered.png');
+		.setURL('attachment://triggered.png')
 		.setTitle('Click here if image failed to load')
 		.setImage('attachment://triggered.png');
 		await msg.channel.send(embed);
