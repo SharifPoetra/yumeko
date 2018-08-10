@@ -89,7 +89,7 @@ exports.run = async (client, msg, args) => {
 		.setTextAlign('right')
 		.setTextFont('16px Roboto')
 		.addText(condition, 370, 142)
-		.setTextFont('16px 'Roboto Condensed'')
+		.setTextFont('16px 'Roboto Condensed\'')
 		.addText(`${humidity}%`, 353, 100)
 		.addText(`${chanceofrain}%`, 353, 121)
 		.toBuffer();
