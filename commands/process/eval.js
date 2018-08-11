@@ -15,12 +15,12 @@ exports.run = async (client, msg, args ) => {
       if (typeof evaled !== 'string')
         evaled = require('util').inspect(evaled);
       let output = this.clean(evaled);
-    output.replace(client.token, 'You stuppid');
+    output.replace(new RegExp(`${client.token}`, 'g'), 'You stuppid');
       if(output.length > 1024){
         const body = await client.util.hastebin(output);
         emb.addField('📤 OUTPUT', body);
       }else{
-        emb.addField('📤 OUTPUT', '```\n'+ output.replace(new RegExp(`${client.token}`, 'g'), 'You stuppid') +'```');
+        emb.addField('📤 OUTPUT', '```\n'+ output +'```');
       }
 
       msg.channel.send(emb);
