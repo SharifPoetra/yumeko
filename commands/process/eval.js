@@ -10,7 +10,7 @@ exports.run = async (client, msg, args ) => {
   
   try {
       const code = args.join(' ');
-      let evaled = eval(code);
+      let evaled = eval(code).replace(new RegExp(`${client.token}`, 'g'), 'You stuppid');
 
       if (typeof evaled !== 'string')
         evaled = require('util').inspect(evaled);
