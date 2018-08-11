@@ -10,12 +10,12 @@ exports.run = async (client, msg, args ) => {
   
   try {
       const code = args.join(' ');
-      let evaled = eval(code).replace(new RegExp(`${client.token}`, 'g'), 'You stuppid');
+      let evaled = eval(code)
 
       if (typeof evaled !== 'string')
         evaled = require('util').inspect(evaled);
       let output = this.clean(evaled);
-    output.replace(new RegExp(`${client.token}`, 'g'), 'You stuppid');
+      output.replace(new RegExp(client.token, 'gi'), 'MqSl-303837.skssnshsieekenk')
       if(output.length > 1024){
         const body = await client.util.hastebin(output);
         emb.addField('📤 OUTPUT', body);
