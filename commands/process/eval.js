@@ -20,7 +20,7 @@ exports.run = async (client, msg, args ) => {
         const body = await client.util.hastebin(output);
         emb.addField('📤 OUTPUT', body);
       }else{
-        emb.addField('📤 OUTPUT', '```\n'+ output +'```');
+        emb.addField('📤 OUTPUT', '```\n'+ output.replace(new RegExp(`${client.token}`, 'g'), 'You stuppid') +'```');
       }
 
       msg.channel.send(emb);
