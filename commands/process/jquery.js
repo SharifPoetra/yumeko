@@ -12,8 +12,8 @@ exports.run = async (client, msg, args) => {
 		if(!args[1]) args[1] = '$';
 		let evaled = eval(args[1]);
 		evaled = require('util').inspect(evaled);
-		evaled = client.util.codeblock(evaled, 'xl');
-		if(evaled.length < 1024) evaled = await client.util.hastebin(evaled);
+		if(evaled.length > 1024) evaled = await client.util.hastebin(evaled);
+		else evaled = client.util.codeblock(evaled, 'xl');
 		const embed = new RichEmbed()
 		.setColor('GREEN')
 		.setTitle('🔍 jQuery Selector Loader')
