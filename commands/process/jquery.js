@@ -9,7 +9,8 @@ exports.run = async (client, msg, args) => {
 	try{
 		const html = await getHtml(args[0]);
 		const $ = load(html);
-		let evaled = eval(args[0] || '$');
+		if(!args[1]) args[1] = '$';
+		let evaled = eval(args[1]);
 		evaled = require('util').inspect(evaled);
 		evaled = client.util.codblock(evaled, 'xl');
 		if(evaled.length < 1024) evaled = await client.util.hastebin(evaled);
