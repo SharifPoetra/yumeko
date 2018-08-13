@@ -17,11 +17,13 @@ exports.run = async (client, msg, args) => {
 		.setColor('GREEN')
 		.setTitle('🔍 jQuery Selector Loader')
 		.setDescription(evaled)
+		return msg.channel.send(embed);
 	}catch(e){
 		const embed = new RichEmbed()
 		.setColor('RED')
 		.setTitle('🚫 An Ewwo Occuwed >w<')
 		.setDescription(client.util.codeblock(e.stack, 'ini'));
+		return msg.channel.send(embed);
 	}
 }
 
