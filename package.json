@@ -23,7 +23,7 @@
     "moment": "^2.22.2",
     "node-highcharts": "^0.0.2",
     "node-superfetch": "^0.1.2",
-    "opusscript": "^0.0.6",
+    "node-opus": "^0.3.0",
     "os": "^0.1.1",
     "simple-youtube-api": "^5.0.2",
     "turndown": "^4.0.2",
