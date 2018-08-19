@@ -36,7 +36,7 @@ exports.run = async (client, msg, args) => {  //pinjem bentar pak buat bot saya 
 		.addField('✂️ Aliases', cmd.conf.aliases.length > 0 ? cmd.conf.aliases.map(x => `${x}`).join(', ') : 'None')
 		.addField('🤖 My Permission', cmd.conf.clientPerm.length > 0 ? cmd.conf.clientPerm : 'None')
 		.addField('👤 User Permission', cmd.conf.authorPerm.length > 0 ? cmd.conf.authorPerm : 'None')
-		.addField('<:commandJS:466981526966501386> Usage', cmd.help.usage)
+		.addField('<:commandJS:480697097629204492> Usage', cmd.help.usage)
 		.addField('📂 Example', cmd.help.example.map(x => `▫ __**${x}**__`).join('\n'))
     .setFooter('ℹ️ Don\'t include <> or [], it\'s mean <> is required and [] is optional');
 		return msg.channel.send(embed);
