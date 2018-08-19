@@ -6,8 +6,8 @@ module.exports = async msg => {
 	const input = msg.content.match(/```(js)?(.|\s)+```/gi)[0].replace(/```(js|javascript)?|```/gi, '').trim();
 	const code = /\bawait\b/i.test(input) ? `(async function(){ \n${input}\n})()` : input;
 	const errors = linter.verify(code, require('../assets/json/eslint-default.json'));
-	if(errors.length < 1) return msg.react('<:betul:480699762455085056>');
-	await msg.react('<:salah:480699762643828737>');
+	if(errors.length < 1) return msg.react('✅');
+	await msg.react('❌');
 	msg.react('🔎');
 	const errs = [];
 	for(let e of errors){
