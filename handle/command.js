@@ -26,7 +26,7 @@ function argsMissing(msg, res, help){
 	.setColor('#FF1000')
 	.setTitle('🚫 It\'s not how you use '+ help.name)
 	.addField('❓Reason', `\`\`\`${res}\`\`\``)
-	.addField('<:commandJS:466981526966501386> Usage', `\`\`\`${help.usage}\`\`\``)
+	.addField('<:commandJS:480697097629204492> Usage', `\`\`\`${help.usage}\`\`\``)
 	.addField('📂 Example', help.example.map(x => `\`\`\`${x}\`\`\``));
 	return msg.channel.send(embed);
 }
