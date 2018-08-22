@@ -1,8 +1,10 @@
 const linter = new (require('eslint').Linter)();
 const { RichEmbed } = require('discord.js');
 const bmsg = require('../assets/json/bad-message.json');
+const no = require('../assets/json/nodetect-js.json');
 
 module.exports = async msg => {
+	if(no.includes(msg.guild.id)) return undefined;
 	const input = msg.content.match(/```(js)?(.|\s)+```/gi)[0].replace(/```(js|javascript)?|```/gi, '').trim();
 	const code = /\bawait\b/i.test(input) ? `(async function(){ \n${input}\n})()` : input;
 	const errors = linter.verify(code, require('../assets/json/eslint-default.json'));
@@ -35,8 +37,3 @@ function annotate(code, errors){
 	}
 	return final;
 }
-
-/*
-<:silang:470941192821932041>
-<:ceklis:470940983765499905>
-*/
