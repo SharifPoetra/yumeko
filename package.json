@@ -33,7 +33,7 @@
     "ws": "^6.0.0"
   },
   "engines": {
-    "node": "8.11.3"
+    "node": "10.x"
   },
   "repository": {
     "url": "https://glitch.com/edit/#!/hello-express"
