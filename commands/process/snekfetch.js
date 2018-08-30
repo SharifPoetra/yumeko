@@ -9,10 +9,11 @@ exports.run = async (client, msg, args) => {
 	const embed = new RichEmbed()
 	.addField('📥 INPUT', input);
 	try{
+		args = args.join(' ').trim().split('--');
 		let link = await eval(`client.snek.${args[0]}`);
 		if(args[1] !== undefined) link = eval(`link.${args[1]}`);
-    link = require('util').inspect(link);
-    link = clean(link);
+		link = require('util').inspect(link);
+		link = clean(link);
 		if(link.length > 1024) link = await client.util.hastebin(link);
 		else link = client.util.codeblock(link, 'js');
 		embed.addField('📤 OUTPUT', link);
@@ -20,7 +21,7 @@ exports.run = async (client, msg, args) => {
 		embed.setFooter(`⏱️ ${Date.now()-tadi}ms`);
 		return msg.channel.send(embed);
 	}catch(e){
-    let err = clean(e.message);
+		let err = clean(e.message);
 		err = client.util.codeblock(e.message, 'ini');
 		if(err.length > 1024) err = await client.util.hastebin(e.message);
 		embed.addField('⛔ ERROR', err);
