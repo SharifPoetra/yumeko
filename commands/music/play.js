@@ -71,7 +71,7 @@ exports.handleVideo = async (client, video, msg, voiceChannel, playlist = false,
 			voiceChannel: voiceChannel,
 			connection: null,
 			songs: [],
-			volume: 5,
+			volume: 50,
 			playing: true
 		}
 		client.queue.set(msg.guild.id, queueConstruct);
@@ -110,7 +110,7 @@ function play(client, guild, song, type = 'biasa', seek = 0){
     }
 	})
 	.on('error', err => console.error(err));
-	dispatcher.setVolumeLogarithmic(serverQueue.volume / 5);
+	dispatcher.setVolumeLogarithmic(serverQueue.volume / 50);
 	type !== 'seek' ? embed(serverQueue.textChannel, song) : undefined;
 }
 
