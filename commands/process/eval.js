@@ -11,7 +11,7 @@ exports.run = async (client, msg, args ) => {
   
   try {
       let evaled;
-      if(args[1] === 'async') evaled = eval(async () => { args[0] })();
+      if(args[1] === 'async') evaled = eval((async () => { args[0] })());
       else evaled = eval(args[0]);
 
       if (typeof evaled !== 'string')
