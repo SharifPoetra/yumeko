@@ -110,7 +110,7 @@ function play(client, guild, song, type = 'biasa', seek = 0){
     }
 	})
 	.on('error', err => console.error(err));
-	dispatcher.setVolumeLogarithmic(serverQueue.volume / 50);
+	dispatcher.setVolume(serverQueue.volume / 50);
 	type !== 'seek' ? embed(serverQueue.textChannel, song) : undefined;
 }
 
