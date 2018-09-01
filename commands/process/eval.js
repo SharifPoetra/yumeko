@@ -1,16 +1,18 @@
 const { RichEmbed } = require('discord.js');
 
 exports.run = async (client, msg, args ) => {
+	args = args.join(' ').split('--');
   const us = Date.now();
-	let code = '```js\n'+ args.join(' ') +'```';
-	if(args.length > 1024) code = await client.util.hastebin(args.join(' '));
+	let code = '```js\n'+ args[0] +'```';
+	if(args.length > 1024) code = await client.util.hastebin(args[0]);
   const emb = new RichEmbed()
   .setColor('#81FF00')
   .addField('📥 INPUT', code);
   
   try {
-      const code = args.join(' ');
-      let evaled = eval(code)
+      let evaled;
+      if(args[1] === 'async') evaled = eval(async () => { args[0] })();
+      else evaled = eval(args[0]);
 
       if (typeof evaled !== 'string')
         evaled = require('util').inspect(evaled);
