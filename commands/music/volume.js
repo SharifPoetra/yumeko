@@ -9,7 +9,7 @@ exports.run = async (client, msg, args) => {
 		if(isNaN(args[0])) return msg.channel.send('Please input valid number >:(');
 		if(args[0] > 100) return msg.channel.send('Volume only can be set in range 1 - 100');
 		serverQueue.volume = args[0];
-		serverQueue.connection.dispatcher.setVolumeLogarithmic(args[1] / 50);
+		serverQueue.connection.dispatcher.setVolume(args[1] / 50);
 		return msg.channel.send(`✅ Set volume to **${args[0]}**`);
 	}catch(e){
 		return msg.channel.send(`Oh no an error occured :( \`${e.message}\` try again later`);
