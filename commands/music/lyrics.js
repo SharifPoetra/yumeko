@@ -12,7 +12,7 @@ exports.run = async (client, msg, args) => {
 		.set('Authorization', `Bearer ${process.env.GENIUS}`);
 		if(!body.response.hits.length) return msg.channel.send('🚫 No result found');
 		const result = body.response.hits.splice(0, 5);
-		const thisMess = await msg.channel.send(embed.setDescription(result.map((x, i) => `${number[i]}[${x.result.full_title](${x.result.url})`).join('\n')));
+		const thisMess = await msg.channel.send(embed.setDescription(result.map((x, i) => `${number[i]}[${x.result.full_title}](${x.result.url})`).join('\n')));
 		for(let i = 0; i < result.length; i++){
 			await thisMess.react(number[i]);
 		}
