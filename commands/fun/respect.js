@@ -14,11 +14,10 @@ exports.run = async (client, msg, args) => {
 		.addRect(0, 0, 720, 405)
 		.setColor('#000000')
 		.addImage(body, 110, 45, 90, 90)
-		.restore()
 		.addImage(plate, 0, 0, 720, 405)
-		.toBufferAsync();
+		.toBuffer();
 		await paintMess.delete();
-		return msg.channel.send(new Attachment(await giveRespect, 'paid-respects.png'))
+		return msg.channel.send(new Attachment(giveRespect, 'paid-respects.png'))
 		.then(x => x.react('🇫'));
 	}catch(e){
 		return msg.channel.send(`Oh no an error occured :( \`${e.message}\` try again later`);
