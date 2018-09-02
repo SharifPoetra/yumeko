@@ -7,7 +7,7 @@ exports.run = async (client, msg, args) => {
 	try{
 		const embed = new RichEmbed()
 		embed.setColor('#00D2FF');
-		const { body } = client.snek.get('https://api.genius.com/search')
+		const { body } = await client.snek.get('https://api.genius.com/search')
 		.query({ q: encodeURIComponent(args.join(' ')) })
 		.set('Authorization', `Bearer ${process.env.GENIUS}`);
 		if(!body.response.hits.length) return msg.channel.send('🚫 No result found');
