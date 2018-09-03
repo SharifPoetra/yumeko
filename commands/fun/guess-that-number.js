@@ -8,7 +8,7 @@ exports.run = async (client, msg, args) => {
 		let progres = 10;
 		let isWin = false;
 		let ans = '❓ Guess started!';
-		while(progres < 1 && !isWin){
+		while(progres > 0 && !isWin){
 			await msg.channel.send(`${ans}\nYou have \`${progres}\` chance now!`);
 			const filter = msgs => (msgs.content.toLowerCase === 'end' || !isNaN(msgs.content)) && msgs.author.id === msg.author.id;
 			const response = await msg.channel.awaitMessages(filter, { max: 1, time: 15000 });
