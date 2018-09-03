@@ -24,7 +24,7 @@ exports.run = async (client, msg, args) => {
 			progres--;
 		}
 		if(isWin) return msg.channel.send(`You won!, it was \`${thatNumber}\``);
-		return msg.channel.send(`Too bad it was `\${thatNumber}`\`);
+		return msg.channel.send(`Too bad it was \`${thatNumber}\``);
 	}catch(e){
 		sessions.delete(msg.channel.id);
 		return msg.channel.send(`Oh no an error occured :( \`${e.message}\` try again later`);
