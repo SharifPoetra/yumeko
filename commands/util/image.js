@@ -24,7 +24,7 @@ exports.run = async (client, msg, args) => {
 		}
 		async function awaitReaction(){
 			const filter = (rect, usr) => choiches.includes(rect.emoji.name) && usr.id === msg.author.id;
-			const response = thisMess.awaitReactions(filter, { max: 1, time: 30000 });
+			const response = await thisMess.awaitReactions(filter, { max: 1, time: 30000 });
 			if(!response.size) return undefined;
 			const emo = response.first().emoji.name;
 			if(emo === '⏪') index -= 10;
