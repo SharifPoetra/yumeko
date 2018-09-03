@@ -63,7 +63,8 @@ exports.handleVideo = async (client, video, msg, voiceChannel, playlist = false,
 		url: `https://www.youtube.com/watch?v=${video.id}`,
     votes: [],
     duration: video.duration,
-    requester: msg.author
+    requester: msg.author,
+		loop: false
 	}
 	if(!serverQueue){
 		const queueConstruct = {
@@ -105,7 +106,8 @@ function play(client, guild, song, type = 'biasa', seek = 0){
 			serverQueue.songs.shift();
 			play(client, guild, serverQueue.songs[0], 'seek', seekTo);
 		}else{
-		 serverQueue.songs.shift();
+		 const shiffed = serverQueue.songs.shift();
+			if(serverQueue.loop) serverQueue.songs.push(shiffed);
 		 play(client, guild, serverQueue.songs[0]);
     }
 	})
