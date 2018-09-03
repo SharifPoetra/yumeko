@@ -9,7 +9,7 @@ exports.run = async (client, msg, args) => {
 		const { body: search } = await client.snek.get(`https://memegen.link/api/search/${args[0]}`);
 		if(!search.length) return msg.channel.send(`Could not find meme with type \`${args[0]}\``);
 		const { body } = await client.snek.get(search[0].template.blank.replace(/\/_/, `/${args[1]}/${args[2]}`));
-		return msg.channel.send(new Attachment(body, name: 'meme.jpg'));
+		return msg.channel.send(new Attachment(body, 'meme.jpg'));
 	}catch(e){
 		return msg.channel.send(`Oh no an error occured :( \`${e.message}\` try again later`);
 	}
