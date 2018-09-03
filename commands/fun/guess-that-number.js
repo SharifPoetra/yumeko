@@ -12,7 +12,7 @@ exports.run = async (client, msg, args) => {
 			await msg.channel.send(`${ans}\nYou have \`${progres}\` chance now!`);
 			const filter = msgs => (msgs.content.toLowerCase === 'end' || !isNaN(msgs.content)) && msgs.author.id === msg.author.id;
 			const response = await msg.channel.awaitMessages(filter, { max: 1, time: 15000 });
-			if(response.size){
+			if(!response.size){
 				await msg.channel.send('⏱️ Sorry time is Up');
 				break;
 			}
