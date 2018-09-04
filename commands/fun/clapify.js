@@ -19,5 +19,5 @@ exports.help = {
   name: 'clapify',
   description: 'make your text to clapify',
   usage: 'clapify [text]',
-  example: ['clapify' 'clapify nani sore !']
+  example: ['clapify', 'clapify nani sore !']
 }
