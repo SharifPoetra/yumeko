@@ -27,5 +27,5 @@ exports.help = {
   name: 'owoify',
   description: 'make your text to owoify',
   usage: 'owoify [text]',
-  example: ['owoify' 'owoify nani sore !']
+  example: ['owoify', 'owoify nani sore !']
 }
