@@ -8,7 +8,7 @@ exports.run = async (client, msg, args) => {
 	if(args.length < 1) return args.missing(msg, 'No link provided', this.help);
 	try{
 		const html = await getHtml(args[0]);
-		const $ = load(html);
+		const $ = load(html, { xmlMode: !args[2] ? false : true});
 		if(!args[1]) args[1] = '$';
 		let evaled = eval(args[1]);
 		evaled = require('util').inspect(evaled);
