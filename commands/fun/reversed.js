@@ -21,5 +21,5 @@ exports.help = {
   name: 'reversed',
   description: 'make your text to reversed',
   usage: 'reversed [text]',
-  example: ['reversed' 'reversed nani sore !']
+  example: ['reversed', 'reversed nani sore !']
 }
