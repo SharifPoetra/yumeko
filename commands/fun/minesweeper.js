@@ -26,7 +26,7 @@ ${showboard.map((x,i) => `${i+1}\u20E3${x.join(' ')}`).join('\n')}
 			`);
 			const filter = msgs => {
 				const param = msgs.content.toLowerCase().split('');
-				param.length === 2 && alphabet.includes(param[0]) && parseInt(param[1], 10) < 7 && !answered.includes(param.join('')) && msgs.author.id === msg.author.id;
+				return param.length === 2 && alphabet.includes(param[0]) && parseInt(param[1], 10) < 7 && !answered.includes(param.join('')) && msgs.author.id === msg.author.id;
 			}
 			const response = await msg.channel.awaitMessages(filter, { max: 1, time: 30000 });
 			if(!response.size){
