@@ -16,7 +16,7 @@ exports.run = async (client, msg, args) => {
 		showboard = client.util.chunk(showboard, 6);
 		let answered = [];
 		let isNginjekBomb = false;
-		let passes = board.length - bombSize;
+		let passes = 36 - bombSize;
 		const message = await msg.channel.send('Loading board...');
 		sessions.add(msg.channel.id);
 		while(passes > 0 && !isNginjekBomb){
