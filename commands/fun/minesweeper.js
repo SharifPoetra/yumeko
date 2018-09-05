@@ -6,7 +6,7 @@ exports.run = async (client, msg, args) => {
 	if(sessions.has(msg.channel.id)) return msg.reply('Only 1 game may be occuring per channel');
 	try{
 		let board = [];
-		let showboard = new Array(36).fill('?');
+		let showboard = new Array(36).fill('⬜');
 		const bombSize = Math.floor(Math.random()*10);
 		for(let i = 0; i < 36; i++){
 			board.push(i < bombSize ? '💣' : '⬛');
@@ -26,7 +26,7 @@ ${showboard.map((x,i) => `${i+1}\u20E3${x.join(' ')}`).join('\n')}
 			`);
 			const filter = msgs => {
 				const param = msgs.content.toLowerCase().split('');
-				param.length === 2 && alphabet.includes(param[0]) && (param[1] < 7 || param[1] > 0) && !answered.includes(param.join('')) && msgs.author.id === msg.author.id;
+				param.length === 2 && alphabet.includes(param[0]) && parseInt(param[1], 10) < 7 && !answered.includes(param.join('')) && msgs.author.id === msg.author.id;
 			}
 			const response = await msg.channel.awaitMessages(filter, { max: 1, time: 30000 });
 			if(!response.size){
@@ -90,4 +90,4 @@ exports.help = {
   description: 'play minesweeper game',
   usage: 'minesweeper',
   example: ['minesweeper']
-}
+} 
