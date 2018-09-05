@@ -1,0 +1,8 @@
+<get, int base ? main ~>
+	$bool isPlay : false;
+	$bool isGet : false;
+	
+	f(<H> ext <H>) $isPlay: <$isPlay>
+	std::process ? bindings;
+	!opus;
+\>
