@@ -5,7 +5,7 @@ const alphabet = ['a', 'b', 'c', 'd', 'e', 'f'];
 exports.run = async (client, msg, args) => {
 	if(sessions.has(msg.channel.id)) return msg.reply('Only 1 game may be occuring per channel');
 	try{
-		const board = [];
+		let board = [];
 		let showboard = new Array(36).fill('?');
 		const bombSize = Math.floor(Math.random()*10);
 		for(let i = 0; i < 36; i++){
@@ -33,7 +33,7 @@ ${showboard.map((x,i) => `${i+1}\u20E3${x.join(' ')}`).join('\n')}
 				await msg.reply('Sorry time is up!');
 				break;
 			}
-			const param = response.first().content.toLowerCase().split('');
+			let param = response.first().content.toLowerCase().split('');
 			param[0] = alphabet.includes[param[0]];
 			param[1] = parseInt(param[1], 10) -1;
 			if(board[param[1]][param[0]] === '💣'){
