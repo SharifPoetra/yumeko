@@ -17,7 +17,7 @@ exports.run = async (client, msg, args) => {
 		.addImage(body, 86, 178, 228, 228)
 		.toBuffer();
 		await paintMess.delete();
-		return msg.channel.send(new Attachment(getWanted, 'paid-respects.png'));
+		return msg.channel.send(new Attachment(getWanted, 'wanted.png'));
 	}catch(e){
 		return msg.channel.send(`Oh no an error occured :( \`${e.message}\` try again later`);
 	}
