@@ -36,15 +36,15 @@ ${showboard.map((x,i) => `${i+1}\u20E3${x.join(' ')}`).join('\n')}
 			const param = response.first().content.toLowerCase().split('');
 			param[0] = alphabet.includes[param[0]];
 			param[1] = parseInt(param[1], 10) -1;
-			if(board[param[1]][param[0]] === '??'){
+			if(board[param[1]][param[0]] === '💣'){
 				for(let i = 0; i < board.length; i++){
 					for(let j = 0; j < board[i].length; i++){
-						if(board[i][j] === '??') showboard[i][j] = '??';
+						if(board[i][j] === '💣') showboard[i][j] = '💣';
 					}
 				}
 				isNginjekBomb = true;
 			} else {
-				const bombCount = getNearbyBomb(board, param[1], [param[0]);
+				const bombCount = getNearbyBomb(board, param[1], param[0]);
 				if(!bombCount) showboard[param[1]][param[0]] = '⬛';
 				else showboard[param[1]][param[0]] = bombcount[bombCount-1];
 				answered.push(response.first().content.toLowerCase());
