@@ -29,7 +29,7 @@
     "chart-constructor": "^0.7.4",
   },
   "engines": {
-    "node": "10.x"
+    "node": "8.x"
   },
   "repository": {
     "url": "https://glitch.com/edit/#!/hello-express"
