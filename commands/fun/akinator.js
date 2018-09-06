@@ -80,7 +80,7 @@ exports.run = async (client, msg, args) => {
 			await thisMess.react(num);
 		}
 		while(akinator.progression < 95){
-			const data = !ans ? await akinator.create(msg.channel.nsfw) : akinator.answer(ans, msg.channel.nsfw);
+			const data = !ans ? await akinator.create(msg.channel.nsfw) : await akinator.answer(ans, msg.channel.nsfw);
 			if (!data || !data.answers || akinator.step >= 80) break;
 			thisMess.edit(fastEmbed(`
 **${++data.step}.** ${data.question} (${Math.round(Number.parseInt(data.progression, 10))}%)
