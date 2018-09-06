@@ -31,6 +31,16 @@ ${showboard.map((x,i) => `${i+1}\u20E3${x.join(' ')}`).join('\n')}
 			const response = await msg.channel.awaitMessages(filter, { max: 1, time: 30000 });
 			if(!response.size){
 				await msg.reply('Sorry time is up!');
+				for(let i = 0; i < board.length; i++){
+					for(let j = 0; j < board[i].length; i++){
+						if(board[i][j] === '💣') showboard[i][j] = '💣';
+					}
+				}
+				await message.edit(`
+⬛🇦 🇧 🇨 🇩 🇪 🇫
+${showboard.map((x,i) => `${i+1}\u20E3${x.join(' ')}`).join('\n')}
+				`);
+				isNginjekBomb = true;
 				break;
 			}
 			let param = response.first().content.toLowerCase().split('');
@@ -42,12 +52,20 @@ ${showboard.map((x,i) => `${i+1}\u20E3${x.join(' ')}`).join('\n')}
 						if(board[i][j] === '💣') showboard[i][j] = '💣';
 					}
 				}
+				await message.edit(`
+⬛🇦 🇧 🇨 🇩 🇪 🇫
+${showboard.map((x,i) => `${i+1}\u20E3${x.join(' ')}`).join('\n')}
+				`);
 				isNginjekBomb = true;
 			} else {
 				const bombCount = getNearbyBomb(board, param[1], param[0]);
 				if(!bombCount) showboard[param[1]][param[0]] = '⬛';
 				else showboard[param[1]][param[0]] = bombcount[bombCount-1];
 				answered.push(response.first().content.toLowerCase());
+				await message.edit(`
+⬛🇦 🇧 🇨 🇩 🇪 🇫
+${showboard.map((x,i) => `${i+1}\u20E3${x.join(' ')}`).join('\n')}
+				`);
 			}
 			passes--;
 		}
@@ -90,4 +108,4 @@ exports.help = {
   description: 'play minesweeper game',
   usage: 'minesweeper',
   example: ['minesweeper']
-} 
+} 	
