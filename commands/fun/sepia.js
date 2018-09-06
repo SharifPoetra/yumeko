@@ -9,7 +9,7 @@ exports.run = async (client, msg, args) => {
 		const paintMess = await msg.channel.send('🖌️ Painting...');
 		const png = user.avatarURL.replace(/\.gif/g, '.png');
 		const { body } = await client.snek.get(png);
-		const avatar = loadImage(body);
+		const avatar = await loadImage(body);
 		let newSepia = new Canvas(avatar.width, avatar.height)
 		.addRect(0, 0, avatar.width, avatar.height)
 		.setColor('#000000')
