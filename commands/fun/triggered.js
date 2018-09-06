@@ -52,7 +52,7 @@ async function getTriggered(triggered) {
 	const imgTitle = new Canvas.Image();
 	const imgTriggered = new Canvas.Image();
 	const encoder = new GIFEncoder(256, 256);
-	const canvas = new Canvas(256, 256);
+	const canvas = new Canvas.createCanvas(256, 256);
 	const ctx = canvas.getContext('2d');
 	imgTitle.src = await readFile('./assets/images/plate_triggered.png');
 	imgTriggered.src = triggered;
