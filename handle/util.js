@@ -62,7 +62,7 @@ class Util {
   }
   static decodeHtmlEntities (text){
     return text.replace(/&#(\d+);/g, (rep, code) => {
-      return String.formCharCode(code)
+      return String.fromCharCode(code)
     });
   }
   static async scrapeSubreddit(subreddit){
