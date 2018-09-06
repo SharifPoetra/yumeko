@@ -95,6 +95,7 @@ ${data.answers.map((x, i) => `${number[i]} ${x.answer}`).join('\n')}
 			ans = number.indexOf(response.first().emoji.name);
 		}
 		await thisMess.delete();
+		isPlayed.delete(msg.channel.id);
 		const guess = await akinator.guess();
 		if (!guess) return msg.reply('Hmm... I seem to be having a bit of trouble. Check back soon!');
 		const embed = new RichEmbed()
