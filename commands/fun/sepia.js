@@ -24,7 +24,7 @@ exports.run = async (client, msg, args) => {
 }
 
 exports.conf = {
-  aliases: [];
+  aliases: [], 
   clientPerm: 'ATTACH_FILES',
   authorPerm: ''
 }
