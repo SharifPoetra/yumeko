@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "gifencoder": "^1.1.0",
-	"canvas": "1.6.12"
+	"canvas": "1.6.12",
     "canvas-constructor": "^1.0.1",
     "cheerio": "^0.22.0",
     "common-tags": "^1.8.0",
