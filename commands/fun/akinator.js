@@ -4,19 +4,22 @@ const number = ['1⃣', '2⃣', '3⃣', '4⃣', '5⃣'];
 const isPlayed = new Set();
 
 class Akinator {
-	constructor(){
+	constructor(url){
 		this.id = 0;
 		this.signature = 0;
 		this.step = 0;
 		this.progression = 0;
+		this.url = url;
 	}
-	
+
 	async create(nsfw = false){
 		const { body } = await snek
-		.get('http://192.99.38.142:8126/ws/new_session')
+		.get(`${this.url}/ws/new_session`)
 		.query({
 			partner: 1,
 			player: 'website-desktop',
+			uid_ext_session: '5ba118d44e469',
+			frontaddr: 'MTc4LjMzLjIzMS45OA==',
 			constraint: 'ETAT<>\'AV\'',
 			soft_constraint: nsfw ? '' : 'ETAT=\'EN\'',
 			question_filter: nsfw ? '' : 'cat=1',
@@ -30,10 +33,10 @@ class Akinator {
 		this.progression = Number.parseInt(data.step_information.progression, 10);
 		return data.step_information;
 	}
-	
+
 	async answer(num, nsfw = false){
 		const { body } = await snek
-		.get('http://192.99.38.142:8126/ws/answer')
+		.get(`${this.url}/ws/answer`)
 		.query({
 			session: this.id,
 			signature: this.signature,
@@ -48,10 +51,10 @@ class Akinator {
 		this.progression = Number.parseInt(data.progression, 10);
 		return data;
 	}
-	
+
 	async guess(){
 		const { body } = await snek
-		.get('http://192.99.38.142:8126/ws/list')
+		.get(`${this.url}/ws/list`)
 		.query({
 			session: this.id,
 			signature: this.signature,
@@ -73,7 +76,7 @@ exports.run = async (client, msg, args) => {
 	if(isPlayed.has(msg.channel.id)) return msg.reply('Only one game may be occuring per channel');
 	isPlayed.add(msg.channel.id);
 	try{
-		const akinator = new Akinator();
+		const akinator = new Akinator('https://srv2.akinator.com:9157/ws/new_session');
 		let ans = NaN;
 		const thisMess = await msg.channel.send('Fetching... Aki');
 		for(const num of number){
