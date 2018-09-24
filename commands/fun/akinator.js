@@ -76,7 +76,7 @@ exports.run = async (client, msg, args) => {
 	if(isPlayed.has(msg.channel.id)) return msg.reply('Only one game may be occuring per channel');
 	isPlayed.add(msg.channel.id);
 	try{
-		const akinator = new Akinator('https://srv2.akinator.com:9157/ws/new_session');
+		const akinator = new Akinator('https://srv2.akinator.com:9157');
 		let ans = NaN;
 		const thisMess = await msg.channel.send('Fetching... Aki');
 		for(const num of number){
