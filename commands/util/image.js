@@ -8,11 +8,12 @@ exports.run = async (client, msg, args) => {
 		const { text } = await client.snek.get('https://www.google.co.uk/search')
 		.query({
 			q: encodeURIComponent(args.join(' ')),
-			tbm: 'isch',
-			safe: 'strict'
+			tbm: 'isch'
 		}) // owner this test from Sharif 
 		.set('User-Agent', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:60.0) Gecko/20100101 Firefox/60.0');
-		const image = text.match(/"ou":"([^"]*)"/g).map(i => i.slice(6, -1));
+		let image = text.match(/"ou":"([^"]*)"/g);
+		if(!image.length) return msg.channel.send('No result found');
+		image = image.map(i => i.slice(6, -1));
 		let index = 0;
 		const embed = new RichEmbed()
 		.setColor('RANDOM')
