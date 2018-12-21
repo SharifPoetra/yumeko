@@ -1,7 +1,7 @@
 const { RichEmbed } = require("discord.js");
 
 exports.run = async(client, message, args) => {
-	if(args.length < 1) return args.missing(msg, 'No query provided', this.help);
+	if(args.length < 1) return args.missing(message, 'No query provided', this.help);
 	const query = args.join('+').replace(/#/g, '.prototype.');
 	try {
 	const { body } = await client.snek
