@@ -17,6 +17,7 @@ exports.run = async(client, message, args) => {
 	.setColor("#066FAD")
 	.setAuthor('MDN', 'https://i.imgur.com/DFGXabG.png', 'https://developer.mozilla.org/')
 	.setTitle(data.title)
+	.setURL(data.url)
 	.setDescription(data.excerpt);
 	return message.channel.send(embed);
 	} catch (e) {
