@@ -1,3 +1,3 @@
 module.exports = (client, e) => {
-  console.error(e)
-}
+  console.error(e);
+};
