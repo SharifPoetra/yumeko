@@ -12,7 +12,7 @@ shard.on('message', (pecahan, msg) => {
 });
 shard.spawn();
 
-//require('./server.js');
+require('./server.js');
 
 process.on('unhandledRejection', e => console.error(e))
 .on('uncaughtException', e => console.error(e));

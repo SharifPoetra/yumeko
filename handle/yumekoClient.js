@@ -16,8 +16,8 @@ class yumekoClient extends Client{
     this.logger = new (require('./logger'))();
     this.radioInfo = {};
     this.radioInfoKpop = {};
-    this.moeJP = new wbListenMoe(this, 'wss://listen.moe/gateway', 'jpop');
-    this.moeKR = new wbListenMoe(this, 'wss://listen.moe/kpop/gateway','kpop');
+    this.moeJP = new wbListenMoe(this, 'wss://listen.moe/gateway_v2', 'jpop');
+    this.moeKR = new wbListenMoe(this, 'wss://listen.moe/kpop/gateway_v2','kpop');
     this.health = Object.seal({
       cpu: new Array(96).fill(0),
       prc: new Array(96).fill(0),

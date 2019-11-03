@@ -4,24 +4,25 @@
   "description": "A simple Node app built on Express, instantly up and running.",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node ."
   },
   "dependencies": {
-    "gifencoder": "^1.1.0",
+    "gifencoder": "^2.0.1",
     "canvas": "github:Automattic/node-canvas",
     "canvas-constructor": "github:kyranet/canvasConstructor",
     "cheerio": "^0.22.0",
     "common-tags": "^1.8.0",
     "discord.js": "^11.5.1",
-    "figlet": "^1.2.0",
-    "moment": "^2.22.2",
+    "figlet": "^1.2.4",
+    "moment": "^2.24.0",
     "node-superfetch": "^0.1.9",
-    "node-opus": "^0.3.0",
-    "os": "^0.1.1",
-    "simple-youtube-api": "^5.0.2",
-    "turndown": "^4.0.2",
-    "ytdl-core": "^0.24.0",
-    "pino": "^4.17.6"
+    "node-opus": "^0.3.2",
+    "simple-youtube-api": "^5.2.1",
+    "turndown": "^5.0.3",
+    "ytdl-core": "^1.0.0",
+    "pino": "^5.13.4",
+    "pino-pretty": "^3.2.2",
+    "express": "^4.16.4"
   },
   "devDependencies": {
     "eslint": "6.1.0"
