@@ -8,5 +8,5 @@ node_modules/
 tmp/
 
 # Miscs
-.glitch_assets
+.glitch-assets
 shrinkwrap.yaml
