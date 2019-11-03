@@ -1,29 +1,31 @@
-const pino = require('pino')({ prettyPrint: true });
+const pino = require("pino")({ prettyPrint: true });
 
 class Logger {
-	trace(...args) {
-		return pino.trace(...args);
-	}
 
-	debug(...args) {
-		return pino.debug(...args);
-	}
+  trace(...args) {
+    return pino.trace(...args);
+  }
 
-	info(...args) {
-		return pino.info(...args);
-	}
+  debug(...args) {
+    return pino.debug(...args);
+  }
 
-	warn(...args) {
-		return pino.warn(...args);
-	}
+  info(...args) {
+    return pino.info(...args);
+  }
 
-	error(...args) {
-		return pino.error(...args);
-	}
+  warn(...args) {
+    return pino.warn(...args);
+  }
 
-	fatal(...args) {
-		return pino.fatal(...args);
-	}
+  error(...args) {
+    return pino.error(...args);
+  }
+
+  fatal(...args) {
+    return pino.fatal(...args);
+  }
+
 }
 
 module.exports = Logger;
