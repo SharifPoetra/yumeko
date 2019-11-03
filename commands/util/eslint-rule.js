@@ -8,7 +8,7 @@ exports.run = async (client, msg, args) => {
     if (!rules.has(args[0])) return msg.channel.send("🚫 Could not find any results.");
     const data = rules.get(args[0]).meta;
     const embed = new RichEmbed()
-      .setAuthor("ESLint", "https://i.imgur.com/TlurpFC.png", "https://eslint.org/")
+      .setAuthor("ESLint", "https://d2eip9sf3oo6c2.cloudfront.net/tags/images/000/000/358/full/eslintlogo.png", "https://eslint.org/")
       .setColor("#3A33D1")
       .setTitle(`${args[0]} (${data.docs.category})`)
       .setURL(`https://eslint.org/docs/rules/${args[0]}`)
