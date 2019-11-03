@@ -4,7 +4,7 @@ const react = ["⏪", "◀", "▶", "⏩"];
 exports.run = async (client, msg, args) => {
   try {
     let emojis = msg.content.includes("--all") ? client.emojis : msg.guild.emojis;
-    emojis = emojis.map(x => `<:${x.name}:${x.id}> | \`<:${x.name}:${x.id}>\``);
+    emojis = emojis.map(x => `${client.emojis.get(x.id) ? client.emojis.get(x.id).toString() : ""} | \`${client.emojis.get(x.id) ? client.emojis.get(x.id).toString() : ""}\``);
     const chunks = client.util.chunk(emojis, 10);
     let index = 0;
     const embed = new RichEmbed()
