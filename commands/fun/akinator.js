@@ -74,7 +74,7 @@ class Akinator {
 
 }
 
-exports.run = async (client, msg, args) => {
+module.exports.run = async (client, msg, args) => {
   if (isPlayed.has(msg.channel.id)) return msg.reply("Only one game may be occuring per channel");
   isPlayed.add(msg.channel.id);
   try {
@@ -121,13 +121,13 @@ function fastEmbed(description, color = "#F78B26") {
     .setDescription(description);
 }
 
-exports.conf = {
+module.exports.conf = {
   aliases: ["the-web-genie", "web-genie"],
   clientPerm: "EMBED_LINKS",
   authorPerm: ""
 };
 
-exports.help = {
+module.exports.help = {
   name: "akinator",
   description: "Think about a real or fictional character, I will try to guess who it is.",
   usage: "akinator",

@@ -1,6 +1,6 @@
 const { RichEmbed } = require("discord.js");
 
-exports.run = async (client, msg, args) => {
+module.exports.run = async (client, msg, args) => {
   if (!args.length) return msg.channel.send("ヽ༼ຈل͜ຈ༽ﾉ");
   try {
     return msg.channel.send(`ヽ༼ຈل͜ຈ༽ﾉ **${args.join(" ").toUpperCase()}** ヽ༼ຈل͜ຈ༽ﾉ`);
@@ -9,13 +9,13 @@ exports.run = async (client, msg, args) => {
   }
 };
 
-exports.conf = {
+module.exports.conf = {
   aliases: [],
   clientPerm: "",
   authorPerm: ""
 };
 
-exports.help = {
+module.exports.help = {
   name: "riot",
   description: "start a riot ヽ༼ຈل͜ຈ༽ﾉ",
   usage: "riot [text]",

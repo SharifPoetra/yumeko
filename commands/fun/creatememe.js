@@ -1,6 +1,6 @@
 const { Attachment } = require("discord.js");
 
-exports.run = async (client, msg, args) => {
+module.exports.run = async (client, msg, args) => {
   args = args.join(" ").split("--").map(x => decodeURIComponent(x));
   if (!args[0]) return args.missing(msg, "No type provided", this.help);
   if (!args[1]) return args.missing(msg, "No top text provided", this.help);
@@ -15,13 +15,13 @@ exports.run = async (client, msg, args) => {
   }
 };
 
-exports.conf = {
+module.exports.conf = {
   aliases: ["memegen"],
   clientPerm: "ATTACH_FILES",
   authorPerm: ""
 };
 
-exports.help = {
+module.exports.help = {
   name: "creatememe",
   description: "Sends a meme with the text and background of your choice.",
   usage: "creatememe <type> --<top text> --<bottom text>",

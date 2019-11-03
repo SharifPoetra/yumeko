@@ -1,4 +1,4 @@
-exports.run = async (client, msg, args) => {
+module.exports.run = async (client, msg, args) => {
   try {
     const { body } = await client.snek.get("https://icanhazdadjoke.com/")
       .set("Accept", "application/json");
@@ -8,13 +8,13 @@ exports.run = async (client, msg, args) => {
   }
 };
 
-exports.conf = {
+module.exports.conf = {
   aliases: [],
   clientPerm: "",
   authorPerm: ""
 };
 
-exports.help = {
+module.exports.help = {
   name: "pun",
   description: "Generates a random pun.",
   usage: "pun",

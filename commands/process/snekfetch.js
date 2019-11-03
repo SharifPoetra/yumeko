@@ -1,7 +1,7 @@
 const { RichEmbed } = require("discord.js");
 const { clean } = require("./eval.js");
 
-exports.run = async (client, msg, args) => {
+module.exports.run = async (client, msg, args) => {
   if (args.length < 1) return args.missing(msg, "No code provided", this.help);
   const tadi = Date.now();
   const input = client.util.codeblock(args.join(" "), "js");
@@ -31,13 +31,13 @@ exports.run = async (client, msg, args) => {
   }
 };
 
-exports.conf = {
+module.exports.conf = {
   aliases: ["snek"],
   clientPerm: "",
   authorPerm: ""
 };
 
-exports.help = {
+module.exports.help = {
   name: "snekfetch",
   description: "make http request using some code",
   usage: "snekfetch <code>",

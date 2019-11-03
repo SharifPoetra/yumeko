@@ -1,6 +1,6 @@
 const { RichEmbed } = require("discord.js");
 
-exports.run = async (client, msg, args) => {
+module.exports.run = async (client, msg, args) => {
   try {
     const { body } = await client.snek.get("https://nekos.life/api/v2/img/lizard");
     const link = body.url;
@@ -15,7 +15,7 @@ exports.run = async (client, msg, args) => {
   }
 };
 
-exports.conf = {
+module.exports.conf = {
   aliases: [],
   clientPerm: "EMBED_LINKS",
   authorPerm: ""

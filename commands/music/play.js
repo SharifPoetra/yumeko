@@ -5,8 +5,8 @@ const { GOOGLE_KEY } = process.env;
 const youtube = new YouTube(GOOGLE_KEY);
 const choice = ["1⃣", "2⃣", "3⃣", "4⃣", "❌"];
 
-exports.youtube = youtube;
-exports.run = async (client, msg, args) => {
+module.exports.youtube = youtube;
+module.exports.run = async (client, msg, args) => {
   try {
     if (args.length < 1) return args.missing(msg, "No query or link or playlist provided", this.help);
     const url = args[0] ? args[0].replace(/<(.+)>/g, "$1") : "";
@@ -54,7 +54,7 @@ exports.run = async (client, msg, args) => {
   }
 };
 
-exports.handleVideo = async (client, video, msg, voiceChannel, playlist = false, force = false) => {
+module.exports.handleVideo = async (client, video, msg, voiceChannel, playlist = false, force = false) => {
   const serverQueue = client.queue.get(msg.guild.id);
   const song = {
     id: video.id,
@@ -133,13 +133,13 @@ function embed(msg, song, type = "biasa") {
   return msg.send(`✅ **Now Playing :**__**${song.title}**__`);
 }
 
-exports.conf = {
+module.exports.conf = {
   aliases: ["p", "pl"],
   clientPerm: "",
   authorPerm: ""
 };
 
-exports.help = {
+module.exports.help = {
   name: "play",
   description: "Play songs on youtube",
   usage: "play <url | query | playlist>",

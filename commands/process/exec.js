@@ -1,7 +1,7 @@
 const { exec } = require("child_process");
 const { RichEmbed } = require("discord.js");
 
-exports.run = (client, msg, args) => {
+module.exports.run = (client, msg, args) => {
   if (!args.join(" ")) return args.missing(msg, "No parameter to execute. you're stuppid", this.help);
   const mu = Date.now();
   const command = `\`\`\`bash\n${args.join(" ")}\`\`\``;
@@ -29,13 +29,13 @@ exports.run = (client, msg, args) => {
   });
 };
 
-exports.conf = {
+module.exports.conf = {
   aliases: ["$", "bash"],
   clientPerm: "",
   authorPerm: ""
 };
 
-exports.help = {
+module.exports.help = {
   name: "exec",
   description: "Executes a command in the Terminal (Linux/macOS) or Command Prompt (Windows) and shows the output",
   usage: "exec <args>",

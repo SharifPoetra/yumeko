@@ -8,7 +8,7 @@ const { Canvas } = require("canvas-constructor");
 const { DRAK_SKY, GOOGLE_KEY } = process.env;
 const link = "https://raw.githubusercontent.com/AdityaTD/PenguBot/master";
 
-exports.run = async (client, msg, args) => {
+module.exports.run = async (client, msg, args) => {
   args = args.join(" ").trim().split("--");
   if (args.length < 1) return args.missing(msg, "No location provided", this.help);
   const query = encodeURIComponent(args[0]);
@@ -121,13 +121,13 @@ function getBase(icon) {
   }
 }
 
-exports.conf = {
+module.exports.conf = {
   aliases: ["wt"],
   clientPerm: "",
   authorPerm: "ATTACH_FILES"
 };
 
-exports.help = {
+module.exports.help = {
   name: "weather",
   description: "Look weather in location you provided",
   usage: "weather <location>",

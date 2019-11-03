@@ -1,7 +1,7 @@
 const { RichEmbed } = require("discord.js");
 const choiches = ["⏪", "⬅", "🔁", "➡", "⏩"];
 
-exports.run = async (client, msg, args) => {
+module.exports.run = async (client, msg, args) => {
   if (!msg.channel.nsfw) return msg.channel.send("🚫 For some reason this command can only work in NSFW channel");
   if (!args.length) return args.missing(msg, "No query provided", this.help);
   try {
@@ -45,13 +45,13 @@ exports.run = async (client, msg, args) => {
   }
 };
 
-exports.conf = {
+module.exports.conf = {
   aliases: [],
   clientPerm: "EMBED_LINKS",
   authorPerm: ""
 };
 
-exports.help = {
+module.exports.help = {
   name: "image",
   description: "search image with given query",
   usage: "image <query>",

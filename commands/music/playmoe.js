@@ -4,7 +4,7 @@ const choice = {
   "🇰🇷": "KR"
 };
 
-exports.run = async (client, msg, args) => {
+module.exports.run = async (client, msg, args) => {
   const voiceChannel = msg.member.voiceChannel;
   if (!voiceChannel) return msg.channel.send("You must join voiceChannel first");
   if (client.queue.has(msg.guild.id)) return msg.channel.send("Woop the queue is not empty. wait to finish it or stop it");
@@ -60,13 +60,13 @@ function play(client, serverRadio) {
   });
 }
 
-exports.conf = {
+module.exports.conf = {
   aliases: [],
   clientPerm: "",
   authorPerm: ""
 };
 
-exports.help = {
+module.exports.help = {
   name: "playmoe",
   description: "Play radio stream in listen.moe",
   usage: "playmoe",

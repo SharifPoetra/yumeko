@@ -2,7 +2,7 @@ const { RichEmbed } = require("discord.js");
 const { load } = require("cheerio");
 const number = ["1⃣", "2⃣", "3⃣", "4⃣", "5⃣"];
 
-exports.run = async (client, msg, args) => {
+module.exports.run = async (client, msg, args) => {
   if (!args.length) return args.missing(msg, "No query provided", this.help);
   try {
     const embed = new RichEmbed();
@@ -36,13 +36,13 @@ exports.run = async (client, msg, args) => {
   }
 };
 
-exports.conf = {
+module.exports.conf = {
   aliases: [],
   clientPerm: "EMBED_LINKS",
   authorPerm: ""
 };
 
-exports.help = {
+module.exports.help = {
   name: "lyrics",
   description: "Search lyrics",
   usage: "lyrics <query>",

@@ -1,6 +1,6 @@
 const { RichEmbed, Util } = require("discord.js");
 
-exports.run = async (client, msg, args) => {
+module.exports.run = async (client, msg, args) => {
   const serverRadio = client.listenMOE.get(msg.guild.id);
   if (!serverRadio) return msg.channel.send("I'm not currently play listen.moe");
   try {
@@ -19,13 +19,13 @@ exports.run = async (client, msg, args) => {
   }
 };
 
-exports.conf = {
+module.exports.conf = {
   aliases: [],
   clientPerm: "EMBED_LINKS",
   authorPerm: ""
 };
 
-exports.help = {
+module.exports.help = {
   name: "npmoe",
   description: "Show currently playing in listen.moe",
   usage: "npmoe",

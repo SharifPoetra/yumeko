@@ -1,6 +1,6 @@
 const { RichEmbed } = require("discord.js");
 
-exports.run = async (client, msg, args) => {
+module.exports.run = async (client, msg, args) => {
   try {
     const { body } = await client.snek.get("https://api.bunnies.io/v2/loop/random/?media=gif,png");
     const link = body.media.gif;
@@ -15,13 +15,13 @@ exports.run = async (client, msg, args) => {
   }
 };
 
-exports.conf = {
+module.exports.conf = {
   aliases: [],
   clientPerm: "EMBED_LINKS",
   authorPerm: ""
 };
 
-exports.help = {
+module.exports.help = {
   name: "bunny",
   description: "Show a random bunny",
   usage: "bunny",

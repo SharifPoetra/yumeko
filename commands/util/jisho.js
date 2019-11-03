@@ -1,6 +1,6 @@
 const { RichEmbed } = require("discord.js");
 
-exports.run = async (client, msg, args) => {
+module.exports.run = async (client, msg, args) => {
   if (args.length < 1) return args.missing(msg, "No query provided", this.help);
   try {
     const { body } = await client.snek.get("http://jisho.org/api/v1/search/words")
@@ -18,13 +18,13 @@ ${data.senses[0].english_definitions.join(", ")}`);
   }
 };
 
-exports.conf = {
+module.exports.conf = {
   aliases: [],
   clientPerm: "",
   authorPerm: ""
 };
 
-exports.help = {
+module.exports.help = {
   name: "jisho",
   description: "Defines a word, but with Japanese.",
   usage: "jisho <query>",

@@ -1,7 +1,7 @@
 const { RichEmbed } = require("discord.js");
 const { owners } = require("../../config.json");
 
-exports.run = async (client, msg, args) => { // pinjem bentar pak buat bot saya :)
+module.exports.run = async (client, msg, args) => { // pinjem bentar pak buat bot saya :)
   try {
     if (args.length < 1) {
       let module = client.helps.array();
@@ -45,29 +45,15 @@ exports.run = async (client, msg, args) => { // pinjem bentar pak buat bot saya 
   }
 };
 
-exports.conf = {
+module.exports.conf = {
   aliases: ["h"],
   clientPerm: "",
   authorPerm: ""
 };
 
-exports.help = {
+module.exports.help = {
   name: "help",
   description: "The first command you'll typing",
   usage: "help [command]",
   example: ["help", "help ping"]
 };
-
-
-/*
-Kolom chat ea :u
-Mohon gunakan dengan bijak :u
-=============================
-OwO#8287 : 'Woy, jawab ea'
-OwO#8287 : 'Diem diem bae :u'
-Sharif#2769 : gk sopan bangsat gk izin pulak
-OwO#828: ea :u
-OwO#8287: Jawab ea :h
-OwO#8287: akhirnya :7
-=============================
-*/

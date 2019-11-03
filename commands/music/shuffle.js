@@ -1,6 +1,6 @@
 const { RichEmbed } = require("discord.js");
 
-exports.run = async (client, msg, args) => {
+module.exports.run = async (client, msg, args) => {
   try {
     const serverQueue = client.queue.get(msg.guild.id);
     if (!serverQueue) return msg.channel.send("Are you sure ? the queue is empty");
@@ -17,13 +17,13 @@ exports.run = async (client, msg, args) => {
   }
 };
 
-exports.conf = {
+module.exports.conf = {
   aliases: ["sf"],
   clientPerm: "",
   authorPerm: ""
 };
 
-exports.help = {
+module.exports.help = {
   name: "shuffle",
   description: "shuffle current queue",
   usage: "shuffle",

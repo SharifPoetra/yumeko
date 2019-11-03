@@ -1,6 +1,6 @@
 const { RichEmbed } = require("discord.js");
 
-exports.run = async (client, msg, args) => {
+module.exports.run = async (client, msg, args) => {
   const user = msg.mentions.users.first() || client.users.get(args[0]);
   if (!user) user = msg.author;
   try {
@@ -20,13 +20,14 @@ function reaction(client, author, user, rect) {
   if (author.id === client.user.id) return `${author.toString()}, awh you ${rect} me >_<.`;
   return `${author.toString()} ${rect} ${user.toString()}`;
 }
-exports.conf = {
+
+module.exports.conf = {
   aliases: [],
   clientPerm: "",
   authorPerm: "EMBED_LINKS"
 };
 
-exports.help = {
+module.exports.help = {
   name: "pat",
   description: "pating some user",
   usage: "pat [mention | id]",

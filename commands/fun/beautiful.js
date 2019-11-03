@@ -2,7 +2,7 @@ const { Attachment } = require("discord.js");
 const readFile = require("util").promisify(require("fs").readFile);
 const { Canvas } = require("canvas-constructor");
 
-exports.run = async (client, msg, args) => {
+module.exports.run = async (client, msg, args) => {
   let user = msg.mentions.users.first() || client.users.get(args[0]);
   if (!user) user = msg.author;
   try {
@@ -24,13 +24,13 @@ exports.run = async (client, msg, args) => {
   }
 };
 
-exports.conf = {
+module.exports.conf = {
   aliases: [],
   clientPerm: "ATTACH_FILES",
   authorPerm: ""
 };
 
-exports.help = {
+module.exports.help = {
   name: "beautiful",
   description: "Admire the beauty of another user or you",
   usage: "beautiful [@user | id ]",

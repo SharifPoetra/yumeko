@@ -1,7 +1,7 @@
 const { RichEmbed } = require("discord.js");
 const { load } = require("cheerio");
 
-exports.run = async (client, msg, args) => {
+module.exports.run = async (client, msg, args) => {
   try {
     const { body } = await client.snek.get("http://random.cat");
     const link = load(body)("img#cat").attr("src");
@@ -16,13 +16,13 @@ exports.run = async (client, msg, args) => {
   }
 };
 
-exports.conf = {
+module.exports.conf = {
   aliases: [],
   clientPerm: "EMBED_LINKS",
   authorPerm: ""
 };
 
-exports.help = {
+module.exports.help = {
   name: "cat",
   description: "Show a random cat",
   usage: "cat",

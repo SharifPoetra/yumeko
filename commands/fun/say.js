@@ -1,4 +1,4 @@
-exports.run = async (client, msg, args) => {
+module.exports.run = async (client, msg, args) => {
   try {
     return msg.channel.send(args.join(" ") || "Im trying to send an empty message");
   } catch (e) {
@@ -6,13 +6,13 @@ exports.run = async (client, msg, args) => {
   }
 };
 
-exports.conf = {
+module.exports.conf = {
   aliases: ["echo"],
   clientPerm: "",
   authorPerm: ""
 };
 
-exports.help = {
+module.exports.help = {
   name: "say",
   description: "say something with bot",
   usage: "say [text]",

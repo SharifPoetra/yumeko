@@ -1,6 +1,6 @@
 const faces = ["(・`ω´・)", ";;w;;", "owo", "UwU", ">w<", "^w^"];
 
-exports.run = async (client, msg, args) => {
+module.exports.run = async (client, msg, args) => {
   try {
     args = args.join(" ") || "What text want you to owoify?";
     args = args.replace(/(?:r|l)/g, "w")
@@ -17,13 +17,13 @@ exports.run = async (client, msg, args) => {
   }
 };
 
-exports.conf = {
+module.exports.conf = {
   aliases: [],
   clientPerm: "",
   authorPerm: ""
 };
 
-exports.help = {
+module.exports.help = {
   name: "owoify",
   description: "make your text to owoify",
   usage: "owoify [text]",

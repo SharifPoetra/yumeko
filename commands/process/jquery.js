@@ -4,7 +4,7 @@ const { load } = require("cheerio");
 
 const link = {}; // chace the link
 
-exports.run = async (client, msg, args) => {
+module.exports.run = async (client, msg, args) => {
   if (args.length < 1) return args.missing(msg, "No link provided", this.help);
   try {
     const html = await getHtml(args[0]);
@@ -39,13 +39,13 @@ async function getHtml(url) {
   }
 }
 
-exports.conf = {
+module.exports.conf = {
   aliases: ["cheer", "jq"],
   clientPerm: "",
   authorPerm: ""
 };
 
-exports.help = {
+module.exports.help = {
   name: "jquery",
   description: "load html and select with jQuery",
   usage: "jquery <link> [selector]",
