@@ -1,7 +1,7 @@
 const { RichEmbed } = require("discord.js");
 const choices = ["A", "B", "C", "D"];
 
-module.exports.run = async (client, msg, args) => {
+module.exports.run = async (client, msg) => {
   try {
     const { body } = await client.snek.get("https://opentdb.com/api.php")
       .query({

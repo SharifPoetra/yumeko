@@ -1,5 +1,3 @@
-const { RichEmbed } = require("discord.js");
-
 module.exports.run = async (client, msg, args) => {
   if (!args.length) return msg.channel.send("ヽ༼ຈل͜ຈ༽ﾉ");
   try {

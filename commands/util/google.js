@@ -17,10 +17,12 @@ module.exports.run = async (client, msg, args) => {
     $(".g>.s>.st").each((i, e) => results[i].value = getText(e));
     $(".g>.r>a").each((i, el) => {
       const raw = el.attribs.href;
+      console.log(raw);
       results[i].name = `[${getText(el)}](${raw.substr(7, raw.indexOf("&sa=U") - 7) || `https://www.google.com/search?q=${query}`})`;
     });
 
     results = results.filter(x => x.name && x.value).splice(0, 3);
+    console.log(results);
     const embed = new RichEmbed()
       .setAuthor(`Result for ${args.join(" ")}`, "http://i.imgur.com/b7k7puJ.jpg", `https://www.google.com/search?q=${query}`)
       .setColor("#E1FAFF")

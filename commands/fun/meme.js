@@ -1,7 +1,7 @@
 const { RichEmbed } = require("discord.js");
 const subReddits = ["crappydesign", "dankmemes", "me_irl", "wholesomememes", "memeeconomy"];
 
-module.exports.run = async (client, msg, args) => {
+module.exports.run = async (client, msg) => {
   try {
     let img = await client.util.scrapeSubreddit(subReddits[Math.floor(Math.random() * subReddits.length)]);
     if (!img) return msg.channel.send("The image cannot be fetched. Try again ❕");

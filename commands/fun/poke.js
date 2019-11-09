@@ -1,7 +1,7 @@
 const { RichEmbed } = require("discord.js");
 
 module.exports.run = async (client, msg, args) => {
-  const user = msg.mentions.users.first() || client.users.get(args[0]);
+  let user = msg.mentions.users.first() || client.users.get(args[0]);
   if (!user) user = msg.author;
   try {
     const { body } = await client.snek.get("https://nekos.life/api/v2/img/poke");

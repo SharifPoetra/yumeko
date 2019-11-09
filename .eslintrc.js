@@ -27,7 +27,7 @@ module.exports = {
     "no-empty-function": "error",
     "no-floating-decimal": "error",
     "no-implied-eval": "error",
-    "no-invalid-this": "error",
+    "no-invalid-this": "off",
     "no-lone-blocks": "error",
     "no-multi-spaces": "error",
     "no-new-func": "error",

@@ -14,9 +14,9 @@ class Util {
     return arr;
   }
   static async hastebin(text) {
-    const { body } = await snek.post("https://hasteb.in/documents")
+    const { body } = await snek.post("https://haste.shrf.xyz/documents")
       .send(text);
-    return `https://hasteb.in/${body.key}`;
+    return `https://haste.shrf.xyz/${body.key}`;
   }
   static chunk(array, chunkSize) {
     const temp = [];
@@ -70,10 +70,10 @@ class Util {
     return `http://imgur.com/${img.hash}${img.ext.replace(/\?.*/, "")}`;
   }
   static promisify(fn) {
-  	if (nodeVersion >= 8) return require("util").promisify(fn);
-  	let name = fn.name;
-	  name = (name || "").replace(/\s|bound(?!$)/g, "");
-	  function newFunction(...args) {
+    if (nodeVersion >= 8) return require("util").promisify(fn);
+    let name = fn.name;
+    name = (name || "").replace(/\s|bound(?!$)/g, "");
+    function newFunction(...args) {
       const arg = [];
       for (const key of Object.keys(args)) arg.push(args[key]);
       return new Promise((resolve, reject) =>
@@ -81,13 +81,13 @@ class Util {
           if (err) return reject(err);
           return resolve(res);
         }]));
-	  }
+    }
     Object.defineProperty(newFunction, "name", { value: name });
     return newFunction;
   }
   static promisifyAll(obj, suffix = "Async") {
-  	const newObj = Object.getPrototypeOf(obj);
-	  for (const key of Object.keys(obj).concat(Object.keys(newObj))) {
+    const newObj = Object.getPrototypeOf(obj);
+    for (const key of Object.keys(obj).concat(Object.keys(newObj))) {
       if (typeof obj[key] !== "function") continue;
       obj[`${key}${suffix}`] = this.promisify(obj[key]);
     }
