@@ -1,7 +1,6 @@
-const { RichEmbed } = require("discord.js");
 const sessions = new Set();
 
-module.exports.run = async (client, msg, args) => {
+module.exports.run = async (client, msg) => {
   if (sessions.has(msg.channel.id)) return msg.channel.send("Only 1 game may occuring per channel");
   try {
     const thatNumber = Math.floor(Math.random() * 100);

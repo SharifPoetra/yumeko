@@ -1,7 +1,7 @@
 const { RichEmbed } = require("discord.js");
 const { owners } = require("../../config.json");
 
-module.exports.run = async (client, msg, args) => { // pinjem bentar pak buat bot saya :)
+module.exports.run = async (client, msg, args) => { /* eslint-disable no-unused-expressions */
   try {
     if (args.length < 1) {
       let module = client.helps.array();

@@ -1,4 +1,4 @@
-module.exports.run = async (client, msg, args) => {
+module.exports.run = async (client, msg) => {
   try {
     const { body } = await client.snek.get("https://api.icndb.com/jokes/random");
     return msg.channel.send(`📢 \`|\` **${body.value.joke}**`);
