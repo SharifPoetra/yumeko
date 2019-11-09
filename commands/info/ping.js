@@ -1,6 +1,6 @@
 const { RichEmbed } = require("discord.js");
 
-exports.run = async (client, msg, args) => {
+module.exports.run = async (client, msg, args) => {
   try {
     const m = await msg.channel.send("Ping...");
     const embed = new RichEmbed()
@@ -13,13 +13,13 @@ exports.run = async (client, msg, args) => {
   }
 };
 
-exports.conf = {
+module.exports.conf = {
   aliases: ["p"],
   clientPerm: [],
   authorPerm: ""
 };
 
-exports.help = {
+module.exports.help = {
   name: "ping",
   description: "Ping pong with the bot",
   usage: "ping",

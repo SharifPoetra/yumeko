@@ -1,6 +1,6 @@
 const { RichEmbed } = require("discord.js");
 
-exports.run = async (client, msg, args) => {
+module.exports.run = async (client, msg, args) => {
   args = args.join(" ").split("--");
   const us = Date.now();
   let code = `\`\`\`js\n${args[0]}\`\`\``;
@@ -38,25 +38,17 @@ exports.run = async (client, msg, args) => {
   }
 };
 
-exports.clean = text => {
+module.exports.clean = text => {
   if (typeof text === "string") { return text.replace(/`/g, `\`${String.fromCharCode(8203)}`).replace(/@/g, `@${String.fromCharCode(8203)}`); } else { return text; }
 };
 
-/*
-const { post } = require('node-superfetch');
-async function hastebin(text){
-	const { body } = await post('https://www.hastebin.com/documents').send(text);
-	return `https://www.hastebin.com/${body.key}.js`
-}
-*/
-
-exports.conf = {
+module.exports.conf = {
   aliases: ["e"],
   clientPerm: "",
   authorPerm: ""
 };
 
-exports.help = {
+module.exports.help = {
   name: "eval",
   description: "evaluate javascript code",
   usage: "eval <code>",

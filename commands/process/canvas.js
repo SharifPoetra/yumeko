@@ -1,7 +1,7 @@
 const { Canvas } = require("canvas-constructor");
 const { RichEmbed } = require("discord.js");
 
-exports.run = async (client, msg, args) => {
+module.exports.run = async (client, msg, args) => {
   const ping = Date.now();
   const regex = /https?:\/\/.+\.(?:png|jpg|jpeg)/gi;
   if (args.length < 1) return args.missing(msg, "No code provided", this.help);
@@ -36,13 +36,13 @@ exports.run = async (client, msg, args) => {
   }
 };
 
-exports.conf = {
+module.exports.conf = {
   aliases: ["cv"],
   clientPerm: "",
   authorPerm: ""
 };
 
-exports.help = {
+module.exports.help = {
   name: "canvas",
   description: "test a canvas-constructor code",
   usage: "canvas <code>",

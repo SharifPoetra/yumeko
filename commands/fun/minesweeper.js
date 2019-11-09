@@ -2,7 +2,7 @@ const sessions = new Set();
 const bombcount = ["<:onebomb:486677493311471627>", "<:twobomb:486677544817393694>", "<:threebomb:486677629253189632>", "<:fourbomb:486677668381720590>", "<:fivebomb:486677705702506497>", "<:sixbomb:486677776141647872>", "<:sevenbomb:486677830940491786>", "<:eightbomb:486677896216182806>"];
 const alphabet = ["a", "b", "c", "d", "e", "f"];
 
-exports.run = async (client, msg, args) => {
+module.exports.run = async (client, msg, args) => {
   if (sessions.has(msg.channel.id)) return msg.reply("Only 1 game may be occuring per channel");
   try {
     let board = [];
@@ -97,13 +97,13 @@ function getNearbyBomb(board, col, stack) {
   return count;
 }
 
-exports.conf = {
+module.exports.conf = {
   aliases: [],
   clientPerm: "",
   authorPerm: ""
 };
 
-exports.help = {
+module.exports.help = {
   name: "minesweeper",
   description: "play minesweeper game",
   usage: "minesweeper",

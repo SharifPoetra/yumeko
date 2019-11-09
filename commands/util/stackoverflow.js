@@ -1,6 +1,6 @@
 const { RichEmbed } = require("discord.js");
 
-exports.run = async (client, msg, args) => {
+module.exports.run = async (client, msg, args) => {
   if (args.length < 1) return args.missing(msg, "No query provided", this.help);
   try {
     const { body } = await client.snek.get("http://api.stackexchange.com/2.2/search/advanced")
@@ -32,13 +32,13 @@ exports.run = async (client, msg, args) => {
   }
 };
 
-exports.conf = {
+module.exports.conf = {
   aliases: ["stov"],
   clientPerm: "EMBED_LINKS",
   authorPerm: ""
 };
 
-exports.help = {
+module.exports.help = {
   name: "stackoverflow",
   description: "Search question on stackoverflow",
   usage: "stackoverflow <query>",

@@ -36,6 +36,6 @@ for (const module of modules) {
   }
 }
 
-exports.commands = Commands;
-exports.aliases = Aliases;
-exports.helps = Helps;
+module.exports.commands = Commands;
+module.exports.aliases = Aliases;
+module.exports.helps = Helps;

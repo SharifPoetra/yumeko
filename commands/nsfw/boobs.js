@@ -1,7 +1,7 @@
 const { RichEmbed } = require("discord.js");
 const subReddits = ["boobies", "tinytits", "TittyDrop", "burstingout", "boltedontits", "boobbounce", "boobs", "downblouse", "cleavage", "pokies"];
 
-exports.run = async (client, msg, args) => {
+module.exports.run = async (client, msg, args) => {
   if (!msg.channel.nsfw) return msg.channel.send(`🚫 ***This channel is not NSFW so I can't send it here...***`);
   try {
     let img = await client.util.scrapeSubreddit(subReddits[Math.floor(Math.random() * subReddits.length)]);
@@ -18,13 +18,13 @@ exports.run = async (client, msg, args) => {
   }
 };
 
-exports.conf = {
+module.exports.conf = {
   aliases: [],
   clientPerm: "EMBED_LINKS",
   authorPerm: ""
 };
 
-exports.help = {
+module.exports.help = {
   name: "boobs",
   description: "Show random boobs porn",
   usage: "boobs",

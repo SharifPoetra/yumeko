@@ -1,6 +1,6 @@
 const { RichEmbed } = require("discord.js");
 
-exports.run = async (client, msg, args) => {
+module.exports.run = async (client, msg, args) => {
   if (args.length < 1) return args.missing(msg, "No integer provided", this.help);
   try {
     const hex = parseInt(args.join("")).toString(16);
@@ -13,13 +13,13 @@ exports.run = async (client, msg, args) => {
   }
 };
 
-exports.conf = {
+module.exports.conf = {
   aliases: ["ith"],
   clientPerm: "EMBED_LINKS",
   authorPerm: ""
 };
 
-exports.help = {
+module.exports.help = {
   name: "int-to-hex",
   description: "Parses integers to hexadecimals.",
   usage: "int-to-hex <int>",

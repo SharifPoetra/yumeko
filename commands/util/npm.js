@@ -1,6 +1,6 @@
 const { RichEmbed } = require("discord.js");
 
-exports.run = async (client, msg, args) => {
+module.exports.run = async (client, msg, args) => {
   const query = args.join("+");
   if (!query) return args.missing(msg, "No query provided", this.help);
   try {
@@ -27,13 +27,13 @@ exports.run = async (client, msg, args) => {
   }
 };
 
-exports.conf = {
+module.exports.conf = {
   aliases: [],
   clientPerm: "EMBED_LINKS",
   authorPerm: ""
 };
 
-exports.help = {
+module.exports.help = {
   name: "npm",
   description: "Gets information on an NPM package.",
   usage: "npm <package name>",

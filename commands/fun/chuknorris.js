@@ -1,4 +1,4 @@
-exports.run = async (client, msg, args) => {
+module.exports.run = async (client, msg, args) => {
   try {
     const { body } = await client.snek.get("https://api.icndb.com/jokes/random");
     return msg.channel.send(`📢 \`|\` **${body.value.joke}**`);
@@ -7,13 +7,13 @@ exports.run = async (client, msg, args) => {
   }
 };
 
-exports.conf = {
+module.exports.conf = {
   aliases: ["ckns"],
   clientPerm: "",
   authorPerm: ""
 };
 
-exports.help = {
+module.exports.help = {
   name: "chuknorris",
   description: "Send a random chuknorris joke",
   usage: "chuknorris",

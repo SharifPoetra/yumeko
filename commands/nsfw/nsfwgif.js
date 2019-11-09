@@ -1,7 +1,7 @@
 const { RichEmbed } = require("discord.js");
 const subReddits = ["NSFW_GIF", "nsfw_gifs", "porn_gifs", "porninfifteenseconds", "CuteModeSlutMode", "60fpsporn", "NSFW_HTML5"];
 
-exports.run = async (client, msg, args) => {
+module.exports.run = async (client, msg, args) => {
   if (!msg.channel.nsfw) return msg.channel.send(`🚫 ***This channel is not NSFW so I can't send it here...***`);
   try {
     let img = await client.util.scrapeSubreddit(subReddits[Math.floor(Math.random() * subReddits.length)]);
@@ -18,13 +18,13 @@ exports.run = async (client, msg, args) => {
   }
 };
 
-exports.conf = {
+module.exports.conf = {
   aliases: [],
   clientPerm: "EMBED_LINKS",
   authorPerm: ""
 };
 
-exports.help = {
+module.exports.help = {
   name: "nsfwgif",
   description: "Show random gifs porn",
   usage: "nsfwgif",

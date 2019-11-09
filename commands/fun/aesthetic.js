@@ -1,4 +1,4 @@
-exports.run = async (client, msg, args) => {
+module.exports.run = async (client, msg, args) => {
   if (!args.length) return msg.channel.send("A E S T H E T I C");
   try {
     return msg.channel.send(args.join(" ").split("").join(" ").toUpperCase());
@@ -7,13 +7,13 @@ exports.run = async (client, msg, args) => {
   }
 };
 
-exports.conf = {
+module.exports.conf = {
   aliases: [],
   clientPerm: "",
   authorPerm: ""
 };
 
-exports.help = {
+module.exports.help = {
   name: "aesthetic",
   description: "make text to A E S T H E T I C",
   usage: "aesthetic [text]",

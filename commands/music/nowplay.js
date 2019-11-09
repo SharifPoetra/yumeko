@@ -1,6 +1,6 @@
 const { RichEmbed } = require("discord.js");
 
-exports.run = async (client, msg, args) => {
+module.exports.run = async (client, msg, args) => {
   try {
     const serverQueue = client.queue.get(msg.guild.id);
     if (!serverQueue) return msg.channel.send("Not Playing anything right now");
@@ -19,7 +19,7 @@ exports.run = async (client, msg, args) => {
   }
 };
 
-exports.getProgressBar = serverQueue => {
+module.exports.getProgressBar = serverQueue => {
   const duration = (serverQueue.songs[0].duration.minutes * 60000) + ((serverQueue.songs[0].duration.seconds % 60000) * 1000);
   const percent = serverQueue.connection.dispatcher.time / duration;
   const num = Math.floor(percent * 12);
@@ -30,7 +30,7 @@ exports.getProgressBar = serverQueue => {
   return str;
 };
 
-exports.getTime = serverQueue => {
+module.exports.getTime = serverQueue => {
   const curentDurationMinute = Math.floor(serverQueue.connection.dispatcher.time / 60000) < 10 ? `0${Math.floor(serverQueue.connection.dispatcher.time / 60000)}` : Math.floor(serverQueue.connection.dispatcher.time / 60000);
   const currentDurationSeconds = Math.floor((serverQueue.connection.dispatcher.time % 60000) / 1000) < 10 ? `0${Math.floor((serverQueue.connection.dispatcher.time % 60000) / 1000)}` : Math.floor((serverQueue.connection.dispatcher.time % 60000) / 1000);
   const endDurationMinute = serverQueue.songs[0].duration.minutes < 10 ? `0${serverQueue.songs[0].duration.minutes}` : serverQueue.songs[0].duration.minutes;
@@ -38,13 +38,13 @@ exports.getTime = serverQueue => {
   return `[${curentDurationMinute}:${currentDurationSeconds} - ${endDurationMinute}:${endDurationSeconds}]`;
 };
 
-exports.conf = {
+module.exports.conf = {
   aliases: ["np"],
   clientPerm: "",
   authorPerm: ""
 };
 
-exports.help = {
+module.exports.help = {
   name: "nowplay",
   description: "Show current song playing",
   usage: "nowplay",

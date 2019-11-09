@@ -1,6 +1,6 @@
 const { RichEmbed } = require("discord.js");
 
-exports.run = async (client, message, args) => {
+module.exports.run = async (client, message, args) => {
   if (args.length < 1) return args.missing(message, "No query provided", this.help);
   const query = args.join("+").replace(/#/g, ".prototype.");
   try {
@@ -21,17 +21,17 @@ exports.run = async (client, message, args) => {
       .setDescription(data.excerpt);
     return message.channel.send(embed);
   } catch (e) {
-    return msg.reply(`Oh no, an error occurred: \`${e.message}\`. Try again later!`);
+    return message.reply(`Oh no, an error occurred: \`${e.message}\`. Try again later!`);
   }
 };
 
-exports.conf = {
+module.exports.conf = {
   aliases: [],
   clientPerm: "",
   authorPerm: ""
 };
 
-exports.help = {
+module.exports.help = {
   name: "mdn",
   description: "resource for developer form developer",
   usage: "mdn <query>",

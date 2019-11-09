@@ -1,7 +1,7 @@
 const { RichEmbed } = require("discord.js");
 const { load } = require("cheerio");
 
-exports.run = async (client, msg, args) => {
+module.exports.run = async (client, msg, args) => {
   const query = encodeURIComponent(args.join("+"));
   if (!query) return args.missing(msg, "No query provided", this.help);
   try {
@@ -37,13 +37,13 @@ function getText(children) {
   return children.map(c => c.children ? getText(c.children) : c.data).join("");
 }
 
-exports.conf = {
+module.exports.conf = {
   aliases: ["gl"],
   clientPerm: "",
   authorPerm: ""
 };
 
-exports.help = {
+module.exports.help = {
   name: "google",
   description: "search something in google",
   usage: "google <query>",

@@ -1,4 +1,4 @@
-exports.run = async (client, msg, args) => {
+module.exports.run = async (client, msg, args) => {
   try {
     args = args.join(" ") || "What text want you to clapify?";
     args = args.replace(/ /g, "👏");
@@ -9,13 +9,13 @@ exports.run = async (client, msg, args) => {
   }
 };
 
-exports.conf = {
+module.exports.conf = {
   aliases: [],
   clientPerm: "",
   authorPerm: ""
 };
 
-exports.help = {
+module.exports.help = {
   name: "clapify",
   description: "make your text to clapify",
   usage: "clapify [text]",

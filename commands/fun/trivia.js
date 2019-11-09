@@ -1,7 +1,7 @@
 const { RichEmbed } = require("discord.js");
 const choices = ["A", "B", "C", "D"];
 
-exports.run = async (client, msg, args) => {
+module.exports.run = async (client, msg, args) => {
   try {
     const { body } = await client.snek.get("https://opentdb.com/api.php")
       .query({
@@ -25,13 +25,13 @@ exports.run = async (client, msg, args) => {
   }
 };
 
-exports.conf = {
+module.exports.conf = {
   aliases: ["tv"],
   clientPerm: "",
   authorPerm: ""
 };
 
-exports.help = {
+module.exports.help = {
   name: "trivia",
   description: "play trivia game with randomly quiz",
   usage: "trivia",

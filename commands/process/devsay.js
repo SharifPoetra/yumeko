@@ -1,6 +1,6 @@
 const { RichEmbed } = require("discord.js");
 
-exports.run = async (client, msg, args) => {
+module.exports.run = async (client, msg, args) => {
   try {
     if (args.length < 2) return args.missing(msg, "Check you missing something", this.help);
     const user = client.users.get(args[0]);
@@ -12,13 +12,13 @@ exports.run = async (client, msg, args) => {
   }
 };
 
-exports.conf = {
+module.exports.conf = {
   aliases: [],
   clientPerm: "",
   authorPerm: ""
 };
 
-exports.help = {
+module.exports.help = {
   name: "devsay",
   description: "Say as dev",
   usage: "devsay <id> <message>",

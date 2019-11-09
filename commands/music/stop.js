@@ -1,4 +1,4 @@
-exports.run = async (client, msg, args) => {
+module.exports.run = async (client, msg, args) => {
   const serverQueue = client.queue.get(msg.guild.id) || client.listenMOE.get(msg.guild.id);
   if (!msg.member.voiceChannel) return msg.channel.send("You must join voice channel first");
   if (!serverQueue) return msg.channel.send("Im not playing anything right now");
@@ -12,13 +12,13 @@ exports.run = async (client, msg, args) => {
   }
 };
 
-exports.conf = {
+module.exports.conf = {
   aliases: [],
   clientPerm: "",
   authorPerm: ""
 };
 
-exports.help = {
+module.exports.help = {
   name: "stop",
   description: "stop the queue",
   usage: "stop",

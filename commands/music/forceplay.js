@@ -1,6 +1,6 @@
 const { handleVideo, youtube } = require("./play.js");
 
-exports.run = async (client, msg, args) => {
+module.exports.run = async (client, msg, args) => {
   if (args.length < 1) return args.missing(msg, "No query or link or playlist provided", this.help);
   const url = args[0] ? args[0].replace(/<(.+)>/g, "$1") : "";
   const voiceChannel = msg.member.voiceChannel;
@@ -33,13 +33,13 @@ exports.run = async (client, msg, args) => {
   }
 };
 
-exports.conf = {
+module.exports.conf = {
   aliases: ["fplay"],
   clientPerm: "",
   authorPerm: ""
 };
 
-exports.help = {
+module.exports.help = {
   name: "forceplay",
   description: "play music but force!",
   usage: "forceplay <url | query>",

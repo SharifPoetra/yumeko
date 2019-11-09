@@ -3,7 +3,7 @@ const GIFEncoder = require("gifencoder");
 const readFile = require("util").promisify(require("fs").readFile);
 const { RichEmbed } = require("discord.js");
 
-exports.run = async (client, msg, args) => {
+module.exports.run = async (client, msg, args) => {
   let user = msg.mentions.users.first() || client.users.get(args[0]);
   if (!user) user = msg.author;
   try {
@@ -77,13 +77,13 @@ async function getTriggered(triggered) {
   return streamToArray(stream).then(Buffer.concat);
 }
 
-exports.conf = {
+module.exports.conf = {
   aliases: ["trigger"],
   clientPerm: "",
   authorPerm: "ATTACH_FILES"
 };
 
-exports.help = {
+module.exports.help = {
   name: "triggered",
   description: "Trigger someone...",
   usage: "triggered [mention|userid]",

@@ -1,6 +1,6 @@
 const { RichEmbed } = require("discord.js");
 
-exports.run = async (client, msg, args) => {
+module.exports.run = async (client, msg, args) => {
   const serverQueue = client.queue.get(msg.guild.id);
   if (!msg.member.voiceChannel) return msg.channel.send("Join voice channel first");
   if (!serverQueue) return msg.channel.send("No songs to seek");
@@ -18,13 +18,13 @@ exports.run = async (client, msg, args) => {
   }
 };
 
-exports.conf = {
+module.exports.conf = {
   aliases: [],
   clientPerm: "",
   authorPerm: ""
 };
 
-exports.help = {
+module.exports.help = {
   name: "seek",
   description: "Seek current songs",
   usage: "seek <duration>",

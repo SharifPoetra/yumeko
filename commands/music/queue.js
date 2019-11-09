@@ -1,7 +1,7 @@
 const { RichEmbed } = require("discord.js");
 const { getTime, getProgressBar } = require("./nowplay.js");
 
-exports.run = async (client, msg, args) => {
+module.exports.run = async (client, msg, args) => {
   try {
     const serverQueue = client.queue.get(msg.guild.id);
     if (!serverQueue) return msg.channel.send("Not playing anything right now");
@@ -47,13 +47,13 @@ exports.run = async (client, msg, args) => {
   }
 };
 
-exports.conf = {
+module.exports.conf = {
   aliases: ["q"],
   clientPerm: "",
   authorPerm: ""
 };
 
-exports.help = {
+module.exports.help = {
   name: "queue",
   description: "Show the current queue",
   usage: "queue",

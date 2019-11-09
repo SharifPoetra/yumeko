@@ -1,7 +1,7 @@
 const { RichEmbed } = require("discord.js");
 const sessions = new Set();
 
-exports.run = async (client, msg, args) => {
+module.exports.run = async (client, msg, args) => {
   if (sessions.has(msg.channel.id)) return msg.channel.send("Only 1 game may occuring per channel");
   try {
     const thatNumber = Math.floor(Math.random() * 100);
@@ -31,13 +31,13 @@ exports.run = async (client, msg, args) => {
   }
 };
 
-exports.conf = {
+module.exports.conf = {
   aliases: ["gtn"],
   clientPerm: "",
   authorPerm: ""
 };
 
-exports.help = {
+module.exports.help = {
   name: "guess-that-number",
   description: "Play a gams Guess That Number",
   usage: "guess-that-number",

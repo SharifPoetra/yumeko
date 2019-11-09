@@ -1,7 +1,7 @@
 const { RichEmbed } = require("discord.js");
 const figlet = require("figlet");
 
-exports.run = async (client, msg, args) => {
+module.exports.run = async (client, msg, args) => {
   const maxLen = 14; // You can modify the max characters here
 
   if (args.join(" ").length > maxLen) {
@@ -28,13 +28,13 @@ exports.run = async (client, msg, args) => {
   });
 };
 
-exports.conf = {
+module.exports.conf = {
   aliases: ["ascii", "unik"],
   clientPerm: "",
   authorPerm: ""
 };
 
-exports.help = {
+module.exports.help = {
   name: "asciify",
   description: "Convert text to ascii",
   usage: "asciify <text>",

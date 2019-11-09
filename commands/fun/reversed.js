@@ -1,4 +1,4 @@
-exports.run = async (client, msg, args) => {
+module.exports.run = async (client, msg, args) => {
   try {
     args = args.join(" ") || "What text want you to reversed?";
     let reversed = "";
@@ -11,13 +11,13 @@ exports.run = async (client, msg, args) => {
   }
 };
 
-exports.conf = {
+module.exports.conf = {
   aliases: [],
   clientPerm: "",
   authorPerm: ""
 };
 
-exports.help = {
+module.exports.help = {
   name: "reversed",
   description: "make your text to reversed",
   usage: "reversed [text]",
