@@ -74,7 +74,7 @@ class Akinator {
 
 }
 
-module.exports.run = async (client, msg, args) => {
+module.exports.run = async (client, msg) => {
   if (isPlayed.has(msg.channel.id)) return msg.reply("Only one game may be occuring per channel");
   isPlayed.add(msg.channel.id);
   try {

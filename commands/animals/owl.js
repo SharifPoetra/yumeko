@@ -1,6 +1,6 @@
 const { RichEmbed } = require("discord.js");
 
-module.exports.run = async (client, msg, args) => {
+module.exports.run = async (client, msg) => {
   try {
     const { body } = await client.snek.get("http://pics.floofybot.moe/owl");
     const link = body.image;

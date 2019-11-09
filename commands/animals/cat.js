@@ -1,7 +1,7 @@
 const { RichEmbed } = require("discord.js");
 const { load } = require("cheerio");
 
-module.exports.run = async (client, msg, args) => {
+module.exports.run = async (client, msg) => {
   try {
     const { body } = await client.snek.get("http://random.cat");
     const link = load(body)("img#cat").attr("src");

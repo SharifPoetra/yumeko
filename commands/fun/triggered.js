@@ -1,9 +1,8 @@
-const Canvas = require("canvas");
+const { createCanvas, Image } = require("canvas");
 const GIFEncoder = require("gifencoder");
 const readFile = require("util").promisify(require("fs").readFile);
-const { RichEmbed } = require("discord.js");
 
-module.exports.run = async (client, msg, args) => {
+module.exports.run = async (client, msg, args) => { /* eslint-disable new-cap */
   let user = msg.mentions.users.first() || client.users.get(args[0]);
   if (!user) user = msg.author;
   try {
@@ -49,10 +48,10 @@ function streamToArray(stream) {
 }
 
 async function getTriggered(triggered) {
-  const imgTitle = new Canvas.Image();
-  const imgTriggered = new Canvas.Image();
+  const imgTitle = new Image();
+  const imgTriggered = new Image();
   const encoder = new GIFEncoder(256, 256);
-  const canvas = new Canvas.createCanvas(256, 256);
+  const canvas = new createCanvas(256, 256);
   const ctx = canvas.getContext("2d");
   imgTitle.src = await readFile("./assets/images/plate_triggered.png");
   imgTriggered.src = triggered;

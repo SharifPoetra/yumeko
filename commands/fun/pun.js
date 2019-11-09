@@ -1,4 +1,4 @@
-module.exports.run = async (client, msg, args) => {
+module.exports.run = async (client, msg) => {
   try {
     const { body } = await client.snek.get("https://icanhazdadjoke.com/")
       .set("Accept", "application/json");

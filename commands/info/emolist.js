@@ -1,7 +1,7 @@
 const { RichEmbed } = require("discord.js");
 const react = ["⏪", "◀", "▶", "⏩"];
 
-exports.run = async (client, msg, args) => {
+module.exports.run = async (client, msg) => {
   try {
     let emojis = msg.content.includes("--all") ? client.emojis : msg.guild.emojis;
     emojis = emojis.map(x => `${client.emojis.get(x.id) ? client.emojis.get(x.id).toString() : ""} | \`${client.emojis.get(x.id) ? client.emojis.get(x.id).toString() : ""}\``);
@@ -39,13 +39,13 @@ exports.run = async (client, msg, args) => {
   }
 };
 
-exports.conf = {
+module.exports.conf = {
   aliases: [],
   clientPerm: "",
   authorPerm: ""
 };
 
-exports.help = {
+module.exports.help = {
   name: "emolist",
   description: "Look list emojis",
   usage: "emolist",
