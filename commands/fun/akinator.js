@@ -1,84 +1,14 @@
 const { RichEmbed } = require("discord.js");
-const snek = require("node-superfetch");
 const number = ["1⃣", "2⃣", "3⃣", "4⃣", "5⃣"];
 const isPlayed = new Set();
-
-class Akinator {
-
-  constructor(url) {
-    this.id = 0;
-    this.signature = 0;
-    this.step = 0;
-    this.progression = 0;
-    this.url = url;
-  }
-
-  async create(nsfw = false) {
-    const { body } = await snek
-      .get(`${this.url}/ws/new_session`)
-      .query({
-        partner: 1,
-        player: "website-desktop",
-        uid_ext_session: "5ba118d44e469",
-        frontaddr: "MTc4LjMzLjIzMS45OA==",
-        constraint: "ETAT<>'AV'",
-        soft_constraint: nsfw ? "" : "ETAT='EN'",
-        question_filter: nsfw ? "" : "cat=1",
-        _: Date.now()
-      });
-    const data = body.parameters;
-    if (!data) return undefined;
-    this.id = data.identification.session;
-    this.signature = data.identification.signature;
-    this.step = 0;
-    this.progression = Number.parseInt(data.step_information.progression, 10);
-    return data.step_information;
-  }
-
-  async answer(num, nsfw = false) {
-    const { body } = await snek
-      .get(`${this.url}/ws/answer`)
-      .query({
-        session: this.id,
-        signature: this.signature,
-        step: this.step,
-        answer: num,
-        question_filter: nsfw ? "" : "cat=1",
-        _: Date.now()
-      });
-    const data = body.parameters;
-    if (!data) return undefined;
-    this.step = Number.parseInt(data.step, 10);
-    this.progression = Number.parseInt(data.progression, 10);
-    return data;
-  }
-
-  async guess() {
-    const { body } = await snek
-      .get(`${this.url}/ws/list`)
-      .query({
-        session: this.id,
-        signature: this.signature,
-        step: this.step,
-        size: 2,
-        max_pic_width: 246,
-        max_pic_height: 294,
-        pref_photos: "VO-OK",
-        duel_allowed: 1,
-        mode_question: 0,
-        _: Date.now()
-      });
-    if (!body.parameters) return undefined;
-    return body.parameters.elements[0].element;
-  }
-
-}
+const Akinator = require("../../handle/akinatorGame/Akinator");
+const akiThumbnail = require("../../assets/json/akinatorImage");
 
 module.exports.run = async (client, msg) => {
   if (isPlayed.has(msg.channel.id)) return msg.reply("Only one game may be occuring per channel");
   isPlayed.add(msg.channel.id);
   try {
-    const akinator = new Akinator("https://srv2.akinator.com:9157");
+    const akinator = new Akinator("https://srv6.akinator.com:9126");
     let ans = NaN;
     const thisMess = await msg.channel.send("Fetching... Aki");
     for (const num of number) {
@@ -87,10 +17,14 @@ module.exports.run = async (client, msg) => {
     while (akinator.progression < 95) {
       const data = isNaN(ans) ? await akinator.create(msg.channel.nsfw) : await akinator.answer(ans, msg.channel.nsfw);
       if (!data || !data.answers || akinator.step >= 80) break;
-      thisMess.edit(fastEmbed(`
-**${++data.step}.** ${data.question} (${Math.round(Number.parseInt(data.progression, 10))}%)
-${data.answers.map((x, i) => `${number[i]} ${x.answer}`).join("\n")}
-			`));
+      
+      const embed = new RichEmbed()
+      .setColor("#F78B26")
+      .setThumbnail(`${getThumbnail(Math.round(Number.parseInt(data.progression, 10)))}`)
+      .setTitle(`**${++data.step}.** ${data.question} (${Math.round(Number.parseInt(data.progression, 10))}%)`)
+      .setDescription(`${data.answers.map((x, i) => `${number[i]} ${x.answer}`).join("\n")}`)
+      thisMess.edit(embed);
+      
       const filter = (rect, usr) => number.includes(rect.emoji.name) && usr.id === msg.author.id;
       const response = await thisMess.awaitReactions(filter, { max: 1, time: 30000 });
       if (!response.size) {
@@ -111,14 +45,28 @@ ${data.answers.map((x, i) => `${number[i]} ${x.answer}`).join("\n")}
     return msg.reply(embed);
   } catch (e) {
     isPlayed.delete(msg.channel.id);
-    return msg.channel.send(`Oh no an error occured :( \`${e.message}\` try again later`);
+    return msg.channel.send(`Oh no an error occured :( \`${e.stack}\` try again later`);
   }
 };
 
-function fastEmbed(description, color = "#F78B26") {
-  return new RichEmbed()
-    .setColor(color)
-    .setDescription(description);
+function getThumbnail(progress) {
+  let thumbnail = akiThumbnail[0];
+  if (progress > 1) { 
+    thumbnail = akiThumbnail[1]; 
+  }
+  if (progress > 30) { 
+    thumbnail = akiThumbnail[2];
+  }
+  if (progress > 50) {
+    thumbnail = akiThumbnail[3];
+  }
+  if (progress > 70) { 
+    thumbnail = akiThumbnail[4];
+  }
+  if (progress > 90) {
+    thumbnail = akiThumbnail[5];
+  }
+  return thumbnail;
 }
 
 module.exports.conf = {
