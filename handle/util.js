@@ -3,6 +3,10 @@ const nodeVersion = parseInt(process.versions.node.split("."), 10);
 
 class Util {
 
+  static randomRange(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
   static shuffle(array) {
     const arr = array.slice(0);
     for (let i = arr.length - 1; i >= 0; i--) {
