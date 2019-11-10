@@ -17,7 +17,6 @@
   "homepage": "https://github.com/SharifPoetra/yumeko#readme",
   "license": "MIT",
   "dependencies": {
-    "2048_functional": "^0.1.1",
     "canvas": "github:Automattic/node-canvas",
     "canvas-constructor": "github:kyranet/canvasConstructor",
     "cheerio": "^0.22.0",
