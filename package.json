@@ -38,7 +38,7 @@
     "eslint": "^6.7.0",
     "eslint-plugin-node": "^10.0.0",
     "eslint-plugin-promise": "^4.2.1",
-    "pino-pretty": "^3.4.0"
+    "pino-pretty": "^3.5.0"
   },
   "engines": {
     "node": "10.x"
