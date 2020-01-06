@@ -28,17 +28,17 @@
     "moment": "^2.24.0",
     "node-opus": "^0.3.2",
     "node-superfetch": "^0.1.9",
-    "pino": "^5.15.0",
+    "pino": "^5.14.0",
     "simple-youtube-api": "^5.2.1",
     "turndown": "^5.0.3",
-    "ws": "^7.2.1",
-    "ytdl-core": "^1.0.6"
+    "ws": "^7.2.0",
+    "ytdl-core": "^1.0.1"
   },
   "devDependencies": {
-    "eslint": "^6.8.0",
-    "eslint-plugin-node": "^10.0.0",
+    "eslint": "^6.7.0",
+    "eslint-plugin-node": "^11.0.0",
     "eslint-plugin-promise": "^4.2.1",
-    "pino-pretty": "^3.5.0"
+    "pino-pretty": "^3.4.0"
   },
   "engines": {
     "node": "10.x"
