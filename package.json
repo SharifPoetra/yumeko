@@ -27,7 +27,7 @@
     "gifencoder": "^2.0.1",
     "moment": "^2.24.0",
     "node-opus": "^0.3.2",
-    "node-superfetch": "^0.1.9",
+    "node-superfetch": "^0.1.10",
     "pino": "^5.14.0",
     "simple-youtube-api": "^5.2.1",
     "turndown": "^5.0.3",
