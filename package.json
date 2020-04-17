@@ -21,7 +21,7 @@
     "canvas-constructor": "github:kyranet/canvasConstructor",
     "cheerio": "^0.22.0",
     "common-tags": "^1.8.0",
-    "discord.js": "^11.5.1",
+    "discord.js": "^12.2.0",
     "express": "^4.16.4",
     "figlet": "^1.2.4",
     "gifencoder": "^2.0.1",
