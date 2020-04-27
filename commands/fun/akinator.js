@@ -17,14 +17,14 @@ module.exports.run = async (client, msg) => {
     while (akinator.progression < 95) {
       const data = isNaN(ans) ? await akinator.create(msg.channel.nsfw) : await akinator.answer(ans, msg.channel.nsfw);
       if (!data || !data.answers || akinator.step >= 80) break;
-      
+
       const embed = new RichEmbed()
-      .setColor("#F78B26")
-      .setThumbnail(`${getThumbnail(Math.round(Number.parseInt(data.progression, 10)))}`)
-      .setTitle(`**${++data.step}.** ${data.question} (${Math.round(Number.parseInt(data.progression, 10))}%)`)
-      .setDescription(`${data.answers.map((x, i) => `${number[i]} ${x.answer}`).join("\n")}`)
+        .setColor("#F78B26")
+        .setThumbnail(`${getThumbnail(Math.round(Number.parseInt(data.progression, 10)))}`)
+        .setTitle(`**${++data.step}.** ${data.question} (${Math.round(Number.parseInt(data.progression, 10))}%)`)
+        .setDescription(`${data.answers.map((x, i) => `${number[i]} ${x.answer}`).join("\n")}`);
       thisMess.edit(embed);
-      
+
       const filter = (rect, usr) => number.includes(rect.emoji.name) && usr.id === msg.author.id;
       const response = await thisMess.awaitReactions(filter, { max: 1, time: 30000 });
       if (!response.size) {
@@ -51,16 +51,16 @@ module.exports.run = async (client, msg) => {
 
 function getThumbnail(progress) {
   let thumbnail = akiThumbnail[0];
-  if (progress > 1) { 
-    thumbnail = akiThumbnail[1]; 
+  if (progress > 1) {
+    thumbnail = akiThumbnail[1];
   }
-  if (progress > 30) { 
+  if (progress > 30) {
     thumbnail = akiThumbnail[2];
   }
   if (progress > 50) {
     thumbnail = akiThumbnail[3];
   }
-  if (progress > 70) { 
+  if (progress > 70) {
     thumbnail = akiThumbnail[4];
   }
   if (progress > 90) {

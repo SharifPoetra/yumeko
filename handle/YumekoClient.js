@@ -13,8 +13,8 @@ class yumekoClient extends Client {
     this.snek = require("node-superfetch");
     this.util = require("./util.js");
     this.queue = new Collection();
-    this.listenMOE = new Collection();
     this.logger = new (require("./logger"))();
+    this.listenMOE = new Collection();
     this.radioInfo = {};
     this.radioInfoKpop = {};
     this.moeJP = new wbListenMoe(this, "wss://listen.moe/gateway_v2", "jpop");

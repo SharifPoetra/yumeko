@@ -1,10 +1,10 @@
-const { RichEmbed } = require("discord.js");
+const { MessageEmbed } = require("discord.js");
 
 module.exports.run = async (client, msg) => {
   try {
     const { body } = await client.snek.get("https://random-d.uk/api/v1/random?type=gif");
     const link = body.url;
-    const embed = new RichEmbed()
+    const embed = new MessageEmbed()
       .setColor("RANDOM")
       .setURL(link)
       .setImage(link)

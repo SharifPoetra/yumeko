@@ -3,7 +3,7 @@ const GIFEncoder = require("gifencoder");
 const readFile = require("util").promisify(require("fs").readFile);
 
 module.exports.run = async (client, msg, args) => { /* eslint-disable new-cap */
-  let user = msg.mentions.users.first() || client.users.get(args[0]);
+  let user = msg.mentions.users.first() || client.users.cache.get(args[0]);
   if (!user) user = msg.author;
   try {
     const mDel = await msg.channel.send("Painting 🖌️");

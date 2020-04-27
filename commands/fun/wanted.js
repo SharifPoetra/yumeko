@@ -3,7 +3,7 @@ const readFile = require("util").promisify(require("fs").readFile);
 const { Canvas } = require("canvas-constructor");
 
 module.exports.run = async (client, msg, args) => {
-  let user = msg.mentions.users.first() || client.users.get(args[0]);
+  let user = msg.mentions.users.first() || client.users.cache.get(args[0]);
   if (!user) user = msg.author;
   try {
     const paintMess = await msg.channel.send("🖌️ Painting...");

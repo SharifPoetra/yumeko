@@ -5,6 +5,7 @@ module.exports.run = async (client, msg, args) => {
   if (!serverRadio) return msg.channel.send("I'm not currently play listen.moe");
   try {
     const radioInfo = serverRadio.region === "JP" ? client.radioInfo : client.radioInfoKpop;
+    console.log(radioInfo);
     const embed = new RichEmbed()
       .setColor("RANDOM")
       .setThumbnail(radioInfo.event ? radioInfo.eventCover : radioInfo.albumCover)

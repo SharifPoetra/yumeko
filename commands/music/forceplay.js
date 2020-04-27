@@ -3,7 +3,7 @@ const { handleVideo, youtube } = require("./play.js");
 module.exports.run = async (client, msg, args) => {
   if (args.length < 1) return args.missing(msg, "No query or link or playlist provided", this.help);
   const url = args[0] ? args[0].replace(/<(.+)>/g, "$1") : "";
-  const voiceChannel = msg.member.voiceChannel;
+  const voiceChannel = msg.member.voice.channel;
   if (!voiceChannel) return msg.channel.send("You must join voiceChannel first");
   if (client.listenMOE.has(msg.guild.id)) return msg.channel.send("Woop im currently play listen.moe. maybe you can ~~wait~~ or stop it");
   if (client.queue.has(msg.guild.id) && voiceChannel.id !== client.queue.get(msg.guild.id).voiceChannel.id) return msg.channel.send(`You must be in **${client.queue.get(msg.guild.id).voiceChannel.name}** to play music`);

@@ -1,10 +1,10 @@
-const { RichEmbed } = require("discord.js");
+const { MessageEmbed } = require("discord.js");
 
 module.exports.run = async (client, msg) => {
   try {
     const { body } = await client.snek.get("http://pics.floofybot.moe/owl");
     const link = body.image;
-    const embed = new RichEmbed()
+    const embed = new MessageEmbed()
       .setColor("RANDOM")
       .setURL(link)
       .setImage(link)

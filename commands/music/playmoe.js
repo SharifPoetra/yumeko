@@ -5,7 +5,7 @@ const choice = {
 };
 
 module.exports.run = async (client, msg, args) => {
-  const voiceChannel = msg.member.voiceChannel;
+  const voiceChannel = msg.member.voice.channel;
   if (!voiceChannel) return msg.channel.send("You must join voiceChannel first");
   if (client.queue.has(msg.guild.id)) return msg.channel.send("Woop the queue is not empty. wait to finish it or stop it");
   if (client.listenMOE.has(msg.guild.id)) return msg.channel.send("Im currently playing");
@@ -27,7 +27,7 @@ To play listen.moe KR`);
     const choices = await m.awaitReactions(filter, { time: 30000, max: 1 });
     await handleMOE(client, choice[choices.first().emoji.name], voiceChannel);
     await m.delete();
-    embed.setDescription("<:listenMoe:473645696155779082> **Now Streaming [LISTEN.moe](https://listen.moe)**. Check the **Now Playing** with the command `npmoe`");
+    embed.setDescription("<:listenMoe:695459989866938425> **Now Streaming [LISTEN.moe](https://listen.moe)**. Check the **Now Playing** with the command `npmoe`");
     return msg.channel.send(embed);
   } catch (e) {
     return msg.channel.send(`Oh no an error occured :( \`${e.message}\` try again later`);
@@ -47,7 +47,7 @@ async function handleMOE(client, region, voiceChannel) {
 }
 
 function play(client, serverRadio) {
-  serverRadio.connection.playStream(serverRadio.link)
+  serverRadio.connection.play(serverRadio.link, { highWaterMark: 2000 })
     .on("end", res => {
       serverRadio.voiceChannel.leave();
       client.listenMOE.delete(serverRadio.voiceChannel.guild.id);
