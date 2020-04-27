@@ -1,10 +1,10 @@
-const { RichEmbed } = require("discord.js");
+const { MessageEmbed } = require("discord.js");
 
 module.exports.run = async (client, msg) => {
   try {
     const { body } = await client.snek.get("https://nekos.life/api/v2/img/lizard");
     const link = body.url;
-    const embed = new RichEmbed()
+    const embed = new MessageEmbed()
       .setColor("RANDOM")
       .setURL(link)
       .setImage(link)

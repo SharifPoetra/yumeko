@@ -3,7 +3,7 @@ const { RichEmbed } = require("discord.js");
 module.exports.run = async (client, msg, args) => {
   try {
     if (args.length < 2) return args.missing(msg, "Check you missing something", this.help);
-    const user = client.users.get(args[0]);
+    const user = client.users.cache.get(args[0]);
     if (!user) return msg.channel.send(`No user with id ${args[0]}`);
     msg.channel.send("Msg sended!");
     return user.send(args.slice(1).join(" "));

@@ -3,14 +3,14 @@ const YouTube = require("simple-youtube-api");
 const ytdl = require("ytdl-core");
 const { GOOGLE_KEY } = process.env;
 const youtube = new YouTube(GOOGLE_KEY);
-const choice = ["1⃣", "2⃣", "3⃣", "4⃣", "❌"];
+const choice = ["1️⃣", "2️⃣", "3️⃣", "4️⃣", "5️⃣", "❌"];
 
 module.exports.youtube = youtube;
 module.exports.run = async (client, msg, args) => {
   try {
     if (args.length < 1) return args.missing(msg, "No query or link or playlist provided", this.help);
     const url = args[0] ? args[0].replace(/<(.+)>/g, "$1") : "";
-    const voiceChannel = msg.member.voiceChannel;
+    const voiceChannel = msg.member.voice.channel;
     if (!voiceChannel) return msg.channel.send("You must join voiceChannel first");
     if (client.listenMOE.has(msg.guild.id)) return msg.channel.send("Woop im currently play listen.moe. maybe you can ~~wait~~ or stop it");
     if (client.queue.has(msg.guild.id) && voiceChannel.id !== client.queue.get(msg.guild.id).voiceChannel.id) return msg.channel.send(`You must be in **${client.queue.get(msg.guild.id).voiceChannel.name}** to play music`);
@@ -31,7 +31,7 @@ module.exports.run = async (client, msg, args) => {
       return this.handleVideo(client, video, msg, voiceChannel);
     } catch (e) {
       try {
-        const videos = await youtube.searchVideos(args.join(" "), 4);
+        const videos = await youtube.searchVideos(args.join(" "), 5);
         let m = await msg.channel.send("Loading...");
         for (const chot of choice) {
           await m.react(chot);
@@ -64,7 +64,8 @@ module.exports.handleVideo = async (client, video, msg, voiceChannel, playlist =
     votes: [],
     duration: video.duration,
     requester: msg.author,
-    loop: false
+    loop: false,
+    endReason: "finish"
   };
   if (!serverQueue) {
     const queueConstruct = {
@@ -72,7 +73,7 @@ module.exports.handleVideo = async (client, video, msg, voiceChannel, playlist =
       voiceChannel: voiceChannel,
       connection: null,
       songs: [],
-      volume: 50,
+      volume: 100,
       playing: true
     };
     client.queue.set(msg.guild.id, queueConstruct);
@@ -98,21 +99,26 @@ function play(client, guild, song, type = "biasa", seek = 0) {
     serverQueue.voiceChannel.leave();
     return client.queue.delete(guild.id);
   }
-  const dispatcher = serverQueue.connection.playStream(ytdl(song.url, { filter: "audioonly" }), { seek: seek })
-    .on("end", res => {
-      if (res !== "Stream is not generating quickly enough.") console.error(res);
-      if (res.includes("seek")) {
-        const seekTo = parseInt(res.split(" ")[1], 10);
+  console.log("SeekTime", seek);
+  const dispatcher = serverQueue.connection.play(ytdl(song.url, { quality: "highestaudio", filter: "audioonly" }), { seek: seek, highWaterMark: 2000 })
+    .on("finish", () => {
+      console.log("EndReason", serverQueue.endReason);
+      if (serverQueue.endReason.includes("seek")) {
+        const seekTo = parseInt(serverQueue.endReason.split(" ")[1], 10);
+        console.log("SeekToTime", seekTo);
         serverQueue.songs.shift();
         play(client, guild, serverQueue.songs[0], "seek", seekTo);
       } else {
-		 const shiffed = serverQueue.songs.shift();
+       serverQueue.endReason = "finish";
+        const shiffed = serverQueue.songs.shift();
+        console.log("Loop", serverQueue.loop);
+        console.log("EndReason", serverQueue.endReason);
         if (serverQueue.loop) serverQueue.songs.push(shiffed);
-		 play(client, guild, serverQueue.songs[0]);
+        play(client, guild, serverQueue.songs[0]);
       }
     })
-    .on("error", err => console.error(err));
-  dispatcher.setVolume(serverQueue.volume / 50);
+    .on("error", err => console.error("MusicError", err));
+  dispatcher.setVolume(serverQueue.volume / 100);
   type !== "seek" ? embed(serverQueue.textChannel, song) : undefined;
 }
 
@@ -122,7 +128,7 @@ function embed(msg, song, type = "biasa") {
       .setColor("RANDOM")
       .setDescription(`✅ **Added to queue :**__**${song.title}**__`)
       .setThumbnail(song.thumbnail);
-    return msg.channel.send(embed).then(m => m.delete(6000));
+    return msg.channel.send(embed).then(m => m.delete({ timeout: 6000 }));
   }
   if (type === "search") {
     const embed = new RichEmbed()

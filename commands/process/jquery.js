@@ -10,7 +10,7 @@ module.exports.run = async (client, msg, args) => {
     const html = await getHtml(args[0]);
     const $ = load(html, { xmlMode: !!args[2] });
     if (!args[1]) args[1] = "$";
-    let evaled = eval(args[1]);
+    let evaled = eval(args.slice(1).join(" "));
     evaled = require("util").inspect(evaled);
     if (evaled.length > 1024) evaled = await client.util.hastebin(evaled);
     else evaled = client.util.codeblock(evaled, "xl");

@@ -21,7 +21,7 @@ module.exports.run = async (client, msg, args) => {
 
 module.exports.getProgressBar = serverQueue => {
   const duration = (serverQueue.songs[0].duration.minutes * 60000) + ((serverQueue.songs[0].duration.seconds % 60000) * 1000);
-  const percent = serverQueue.connection.dispatcher.time / duration;
+  const percent = serverQueue.connection.dispatcher.streamTime / duration;
   const num = Math.floor(percent * 12);
   let str = "";
   for (let i = 0; i < 12; i++) {
@@ -31,8 +31,8 @@ module.exports.getProgressBar = serverQueue => {
 };
 
 module.exports.getTime = serverQueue => {
-  const curentDurationMinute = Math.floor(serverQueue.connection.dispatcher.time / 60000) < 10 ? `0${Math.floor(serverQueue.connection.dispatcher.time / 60000)}` : Math.floor(serverQueue.connection.dispatcher.time / 60000);
-  const currentDurationSeconds = Math.floor((serverQueue.connection.dispatcher.time % 60000) / 1000) < 10 ? `0${Math.floor((serverQueue.connection.dispatcher.time % 60000) / 1000)}` : Math.floor((serverQueue.connection.dispatcher.time % 60000) / 1000);
+  const curentDurationMinute = Math.floor(serverQueue.connection.dispatcher.streamTime / 60000) < 10 ? `0${Math.floor(serverQueue.connection.dispatcher.streamTime / 60000)}` : Math.floor(serverQueue.connection.dispatcher.streamTime / 60000);
+  const currentDurationSeconds = Math.floor((serverQueue.connection.dispatcher.streamTime % 60000) / 1000) < 10 ? `0${Math.floor((serverQueue.connection.dispatcher.streamTime % 60000) / 1000)}` : Math.floor((serverQueue.connection.dispatcher.streamTime % 60000) / 1000);
   const endDurationMinute = serverQueue.songs[0].duration.minutes < 10 ? `0${serverQueue.songs[0].duration.minutes}` : serverQueue.songs[0].duration.minutes;
   const endDurationSeconds = serverQueue.songs[0].duration.seconds < 10 ? `0${serverQueue.songs[0].duration.seconds}` : serverQueue.songs[0].duration.seconds;
   return `[${curentDurationMinute}:${currentDurationSeconds} - ${endDurationMinute}:${endDurationSeconds}]`;

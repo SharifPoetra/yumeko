@@ -1,3 +1,4 @@
+require("discord.js").RichEmbed = require("discord.js").MessageEmbed;
 const YumekoClient = require("./handle/YumekoClient.js");
 
 const client = new YumekoClient({
@@ -6,6 +7,7 @@ const client = new YumekoClient({
 });
 
 require("./handle/events")(client);
+
 
 client.login(process.env.TOKEN);
 

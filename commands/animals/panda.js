@@ -1,10 +1,10 @@
-const { RichEmbed } = require("discord.js");
+const { MessageEmbed } = require("discord.js");
 
 module.exports.run = async (client, msg) => {
   try {
     const { body } = await client.snek.get("https://animals.anidiots.guide/panda");
     const link = body.link;
-    const embed = new RichEmbed()
+    const embed = new MessageEmbed()
       .setColor("RANDOM")
       .setURL(link)
       .setImage(link)

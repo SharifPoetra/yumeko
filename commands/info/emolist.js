@@ -3,8 +3,8 @@ const react = ["⏪", "◀", "▶", "⏩"];
 
 module.exports.run = async (client, msg) => {
   try {
-    let emojis = msg.content.includes("--all") ? client.emojis : msg.guild.emojis;
-    emojis = emojis.map(x => `${client.emojis.get(x.id) ? client.emojis.get(x.id).toString() : ""} | \`${client.emojis.get(x.id) ? client.emojis.get(x.id).toString() : ""}\``);
+    let emojis = msg.content.includes("--all") ? client.emojis.cache : msg.guild.emojis.cache;
+    emojis = emojis.map(x => `${client.emojis.cache.get(x.id) ? client.emojis.cache.get(x.id).toString() : ""} | \`${client.emojis.cache.get(x.id) ? client.emojis.cache.get(x.id).toString() : ""}\``);
     const chunks = client.util.chunk(emojis, 10);
     let index = 0;
     const embed = new RichEmbed()
