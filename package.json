@@ -17,7 +17,7 @@
   "homepage": "https://github.com/SharifPoetra/yumeko#readme",
   "license": "MIT",
   "dependencies": {
-    "@discordjs/opus": "^0.1.0",
+    "@discordjs/opus": "^0.3.2",
     "canvas": "github:Automattic/node-canvas",
     "canvas-constructor": "github:kyranet/canvasConstructor",
     "cheerio": "^0.22.0",
