@@ -33,7 +33,7 @@
     "sodium": "^3.0.2",
     "turndown": "^6.0.0",
     "ws": "^7.2.5",
-    "ytdl-core": "^2.1.1"
+    "ytdl-core": "^2.1.5"
   },
   "devDependencies": {
     "eslint": "^6.7.0",
