@@ -28,7 +28,7 @@
     "gifencoder": "^2.0.1",
     "moment": "^2.24.0",
     "node-superfetch": "^0.1.10",
-    "pino": "^6.2.1",
+    "pino": "^6.3.2",
     "simple-youtube-api": "^5.2.1",
     "sodium": "^3.0.2",
     "turndown": "^6.0.0",
