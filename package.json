@@ -26,17 +26,17 @@
     "express": "^4.17.1",
     "figlet": "^1.4.0",
     "gifencoder": "^2.0.1",
-    "moment": "^2.26.0",
+    "moment": "^2.27.0",
     "node-superfetch": "^0.1.10",
     "pino": "^6.3.2",
     "simple-youtube-api": "^5.2.1",
     "turndown": "^6.0.0",
     "twemoji": "^13.0.0",
-    "ws": "^7.3.0",
-    "ytdl-core": "^3.1.0"
+    "ws": "^7.3.1",
+    "ytdl-core": "^3.1.1"
   },
   "devDependencies": {
-    "eslint": "^7.1.0",
+    "eslint": "^7.3.0",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.2.1",
     "pino-pretty": "^3.6.1"
